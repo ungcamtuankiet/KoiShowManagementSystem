@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Repository.Entities;
+namespace Repository.Entites;
 
 public partial class Competition
 {
@@ -18,6 +18,10 @@ public partial class Competition
     public string? Location { get; set; }
 
     public string? Status { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
 
     public int? CategoryId { get; set; }
 

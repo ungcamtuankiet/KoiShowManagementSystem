@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Repository.Entities;
+namespace Repository.Entites;
 
 public partial class Result
 {
@@ -16,6 +16,12 @@ public partial class Result
     public string? Rank { get; set; }
 
     public decimal? TotalScore { get; set; }
+
+    public string? Status { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
 
     public virtual Category? Category { get; set; }
 

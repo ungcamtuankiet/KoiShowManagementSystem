@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Repository.Entities;
+namespace Repository.Entites;
 
 public partial class KoiRegistration
 {
@@ -16,6 +16,10 @@ public partial class KoiRegistration
     public DateTime? RegistrationDate { get; set; }
 
     public string? Status { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
 
     public virtual Category? Category { get; set; }
 
