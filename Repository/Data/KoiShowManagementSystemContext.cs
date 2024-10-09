@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Repository.Entities;
+using Repository.Entites;
 
 namespace Repository.Data;
 
@@ -38,25 +38,30 @@ public partial class KoiShowManagementSystemContext : DbContext
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC0752DCB00A");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC075C338719");
 
             entity.ToTable("Category");
 
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Competition>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Competit__3214EC07EC99EA4E");
+            entity.HasKey(e => e.Id).HasName("PK__Competit__3214EC07A8746904");
 
             entity.ToTable("Competition");
 
             entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.Location).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Competitions)
                 .HasForeignKey(d => d.CategoryId)
@@ -65,16 +70,19 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<JudgeScore>(entity =>
         {
-            entity.HasKey(e => e.ScoreId).HasName("PK__JudgeSco__7DD229D1CCBBF767");
+            entity.HasKey(e => e.ScoreId).HasName("PK__JudgeSco__7DD229D1B3784B6F");
 
             entity.ToTable("JudgeScore");
 
             entity.Property(e => e.BodyScore).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.ColorScore).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.CompetitionId).HasColumnName("Competition_Id");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.PatternScore).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.TotalScore).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
             entity.Property(e => e.UserId).HasColumnName("User_Id");
 
             entity.HasOne(d => d.Competition).WithMany(p => p.JudgeScores)
@@ -92,13 +100,15 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<KoiFish>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__KoiFish__3214EC07F31FBB15");
+            entity.HasKey(e => e.Id).HasName("PK__KoiFish__3214EC07A33621A0");
 
             entity.ToTable("KoiFish");
 
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
             entity.Property(e => e.UserId).HasColumnName("User_Id");
             entity.Property(e => e.Variety).HasMaxLength(255);
 
@@ -109,15 +119,17 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<KoiRegistration>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC0712E1B527");
+            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC07C72C52B6");
 
             entity.ToTable("KoiRegistration");
 
             entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
             entity.Property(e => e.CompetitionId).HasColumnName("Competition_Id");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.KoiRegistrations)
                 .HasForeignKey(d => d.CategoryId)
@@ -134,15 +146,18 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<Result>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC0736D8B972");
+            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC07004A9C0A");
 
             entity.ToTable("Result");
 
             entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
             entity.Property(e => e.CompetitionId).HasColumnName("Competition_Id");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.Rank).HasMaxLength(50);
+            entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.TotalScore).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Results)
                 .HasForeignKey(d => d.CategoryId)
@@ -159,15 +174,18 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3214EC074D613C26");
+            entity.HasKey(e => e.Id).HasName("PK__User__3214EC0735C6B558");
 
             entity.ToTable("User");
 
             entity.Property(e => e.Address).HasMaxLength(255);
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(50);
-            entity.Property(e => e.Role).HasMaxLength(50);
+            entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
         });
 
         OnModelCreatingPartial(modelBuilder);

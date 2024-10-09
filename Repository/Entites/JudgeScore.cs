@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Repository.Entities;
+namespace Repository.Entites;
 
 public partial class JudgeScore
 {
@@ -22,6 +22,12 @@ public partial class JudgeScore
     public decimal? TotalScore { get; set; }
 
     public string? Comments { get; set; }
+
+    public string? Status { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
 
     public virtual Competition? Competition { get; set; }
 
