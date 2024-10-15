@@ -9,9 +9,10 @@ namespace Repository.IRepositories
 {
     public interface IUserRepository
     {
-        Task<User> AddUserAsync(User user);
-        Task<User> UpdateUserAsync(User user);
-        Task<User?> GetUserByEmailAsync(string email);
-        Task<bool> VerifyPasswordAsync(User user, string password);
+        Task<User?> GetUserByEmailAndPassword(string email, string password);
+        Task<User> GetUserByEmail(string email);
+        Task<bool> CheckEmailAndPhoneNo(string email, string phone);
+        Task<User?> GetUserById(int id);
+        Task RegisterUser(User user);
     }
 }

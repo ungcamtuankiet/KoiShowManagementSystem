@@ -1,5 +1,6 @@
 ﻿using Repository.Dtos.Koi;
 using Repository.Dtos.Response;
+using Repository.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Service.IService
 {
     public interface IKoiService
     {
-        Task<Response> GetListKoiFish();
-        Task<Response> AddNewKoi(RegisterKoi registerKoi);
+        Task RegisterKoi(int koiId, int competitionId);
+        Task<IEnumerable<KoiFish>> GetKoiForCompetition(int competitionId);
     }
 }

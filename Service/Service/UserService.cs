@@ -1,8 +1,10 @@
 ﻿using Repository.Dtos.Response;
 using Repository.Dtos.User;
 using Repository.Entites;
+using Repository.Enum;
 using Repository.IRepositories;
 using Service.IService;
+using System.Data;
 
 namespace Service.Service
 {
@@ -14,81 +16,143 @@ namespace Service.Service
         {
             _userRepository = userRepository;
         }
-
-        public async Task<Response> RegisterUserAsync(RegisterUserDto userDto)
+        public async Task<User> GetUserByEmail(string email)
         {
-            var checkExistUser = _userRepository.GetUserByEmailAsync(userDto.Email);
-            // Kiểm tra nếu người dùng đã tồn tại
-            if (checkExistUser != null)
+            return await _userRepository.GetUserByEmail(email);
+        }
+        public async Task<Response?> Login(LoginUserDto loginUserDto)
+        {
+            var login = await _userRepository.GetUserByEmailAndPassword(loginUserDto.Email, loginUserDto.Password);
+            if (loginUserDto.Email == null || loginUserDto.Password == null)
             {
-                return new Response
+                return new Response()
                 {
                     Code = 1,
-                    Message = "User already exist",
+                    Message = "Email and password cannot be blank",
                     Data = null
                 };
             }
-            var newUser = new User
+            if (login == null)
             {
-                FullName = userDto.FullName,
-                Email = userDto.Email,
-                Password = userDto.Password,
-                PhoneNumber = userDto.PhoneNumber,
-                Address = userDto.Address,
-                Role = 1
-            };
-            // Thêm người dùng vào cơ sở dữ liệu
-            await _userRepository.AddUserAsync(newUser);
-            return new Response
-            {
-                Code = 0,
-                Message = "Add user successfully",
-                Data = newUser
-            };
-        }
-
-        public async Task<Response> UpdateUserAsync(UpdateUser updateUser)
-        {
-            var newUser = new User
-            {
-                FullName = updateUser.FullName,
-                Email = updateUser.Email,
-                Password = updateUser.Password,
-                PhoneNumber = updateUser.PhoneNumber,
-                Address = updateUser.Address,
-            };
-            await _userRepository.UpdateUserAsync(newUser);
-            return new Response
-            {
-                Code = 0,
-                Message = "Update User Successfully",
-                Data = newUser
-            };
-        }
-
-
-        public async Task<Response> LoginAsync(LoginUserDto userDto)
-        {
-            // Tìm người dùng qua email
-            var user = await _userRepository.GetUserByEmailAsync(userDto.Email);
-            if (user == null)
-            {
-                return new Response
+                return new Response()
                 {
                     Code = 1,
-                    Message = "User not exist",
-                    Data = user
+                    Message = "Email or Password incorrect",
+                    Data = null
+                };
+            }
+            return new Response()
+            {
+                Code = 0,
+                Message = "Login Successfully",
+                Data = null
+            };
+        }
+
+        public async Task<Response> Register(RegisterUserDto registerUserDto)
+        {
+            var checkEmailAndPhoneNo = await _userRepository.CheckEmailAndPhoneNo(registerUserDto.Email, registerUserDto.PhoneNumber);
+            if (registerUserDto.Email == null || registerUserDto.PhoneNumber == null || registerUserDto.FullName == null || registerUserDto.Address == null || registerUserDto.Password == null)
+            {
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Please fill in all information",
+                    Data = null
+                };
+            }
+            if (!checkEmailAndPhoneNo)
+            {
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Email or PhoneNumber already exist",
+                    Data = null
+                };
+            }
+            // Kiểm tra định dạng Email
+            if (!IsValidEmail(registerUserDto.Email))
+            {
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Invalid email format",
+                    Data = null
                 };
             }
 
-            // Kiểm tra mật khẩu
-            var passwordValid = await _userRepository.VerifyPasswordAsync(user, userDto.Password);
-            return new Response
+            // Kiểm tra định dạng PhoneNumber
+            if (!IsValidPhoneNumber(registerUserDto.PhoneNumber))
             {
-                Code = 0,
-                Message = "",
-                Data = user
-            };
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Phone number must be between 10 and 15 digits",
+                    Data = null
+                };
+            }
+
+            // Kiểm tra định dạng Password
+            if (!IsValidPassword(registerUserDto.Password))
+            {
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Password must be between 6 and 20 characters, and include uppercase, lowercase, numbers, and special characters.",
+                    Data = null
+                };
+            }
+            else
+            {
+                var user = new User
+                {
+                    FullName = registerUserDto.FullName,
+                    Email = registerUserDto.Email,
+                    Password = registerUserDto.Password,
+                    PhoneNumber = registerUserDto.PhoneNumber,
+                    Address = registerUserDto.Address,
+                    Role = RoleEnum.Member.ToString(),
+                    Status = "Active",
+                    CreatedAt = DateTime.Now
+                };
+                await _userRepository.RegisterUser(user);
+                return new Response()
+                {
+                    Code = 0,
+                    Message = "Register Successully",
+                    Data = null
+                };
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var mail = new System.Net.Mail.MailAddress(email);
+                return mail.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Phương thức kiểm tra định dạng số điện thoại
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            return phoneNumber.Length >= 10 && phoneNumber.Length <= 15 && phoneNumber.All(char.IsDigit);
+        }
+
+        // Phương thức kiểm tra định dạng mật khẩu
+        private bool IsValidPassword(string password)
+        {
+            // Kiểm tra độ dài và yêu cầu ký tự
+            return password.Length >= 6 && password.Length <= 20 &&
+                   password.Any(char.IsUpper) &&  // Chứa ít nhất một chữ cái in hoa
+                   password.Any(char.IsLower) &&  // Chứa ít nhất một chữ cái thường
+                   password.Any(char.IsDigit) &&   // Chứa ít nhất một số
+                   password.Any(ch => !char.IsLetterOrDigit(ch)); // Chứa ít nhất một ký tự đặc biệt
         }
     }
 }

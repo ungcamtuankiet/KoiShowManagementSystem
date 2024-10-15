@@ -17,7 +17,7 @@ public partial class User
 
     public string? Address { get; set; }
 
-    public int? Role { get; set; }
+    public string? Role { get; set; }
 
     public string? Status { get; set; }
 

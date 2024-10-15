@@ -1,0 +1,13 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Staff.StaffPageModel
+@if (Model.UserRole == "Staff")
+{
+    <form method="post" asp-page-handler="Logout">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+}
+else
+{
+    <p>Đây là trang staff</p>
+    <p>Chào mừng bạn đến hệ thống!</p>
+}

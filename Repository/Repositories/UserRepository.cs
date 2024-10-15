@@ -19,28 +19,34 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public async Task<User> AddUserAsync(User user)
-        {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            return user;
-        }
-        public async Task<User> UpdateUserAsync(User user)
-        {
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-            return user;
-        }
-        public async Task<User?> GetUserByEmailAsync(string email)
+        public async Task<User> GetUserByEmail(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
-
-        // Giả định rằng chúng ta kiểm tra mật khẩu ở đây. Nếu sử dụng ASP.NET Identity, nó sẽ mã hóa và so sánh tự động.
-        public Task<bool> VerifyPasswordAsync(User user, string password)
+        public async Task<bool> CheckEmailAndPhoneNo(string email, string phone)
         {
-            // Giả sử chúng ta không sử dụng ASP.NET Identity
-            return Task.FromResult(user.Password == password); // So sánh mật khẩu đơn giản (lưu ý rằng đây là ví dụ)
+            var check = await _context.Users.FirstOrDefaultAsync(u => u.Email == email || u.PhoneNumber == phone);
+            if (check == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<User?> GetUserByEmailAndPassword(string email, string password)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+        }
+
+        public async Task<User?> GetUserById(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
+
+        public async Task RegisterUser(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -21,44 +21,22 @@ namespace Service.Service
             _koiRepository = repository;
         }
 
-        public async Task<Response> GetListKoiFish()
+        public async Task RegisterKoi(int koiId, int competitionId)
         {
-            var getListKoi = await _koiRepository.GetListKoiFish();
-            if (getListKoi != null)
+            var registration = new KoiRegistration
             {
-                return new Response
-                {
-                    Code = 0,
-                    Message = "",
-                    Data = getListKoi
-                };
-            }
-            return new Response
-            {
-                Code = 0,
-                Message = "",
-                Data = null
-            };
-        }
-
-        public async Task<Response> AddNewKoi(RegisterKoi registerKoi)
-        {
-            var newKoi = new KoiFish()
-            {
-                UserId = 1,
-                Name = registerKoi.Name,
-                Variety = registerKoi.Variety,
-                Description = registerKoi.Description,
+                KoiId = koiId,
+                CompetitionId = competitionId,
                 RegistrationDate = DateTime.Now,
                 Status = "Pending"
             };
-            await _koiRepository.RegisterKoi(newKoi);
-            return new Response
-            {
-                Code = 0,
-                Message = "Add New Koi Successfully",
-                Data = newKoi
-            };
+
+            await _koiRepository.AddKoiRegistration(registration);
+        }
+
+        public async Task<IEnumerable<KoiFish>> GetKoiForCompetition(int competitionId)
+        {
+            return await _koiRepository.GetAllKoiForCompetition(competitionId);
         }
     }
 }
