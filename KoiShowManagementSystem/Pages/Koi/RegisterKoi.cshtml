@@ -1,0 +1,36 @@
+﻿@page
+@model RegisterKoiModel
+@{
+    ViewData["Title"] = "RegisterKoi";
+}
+
+<h2>Register Koi</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="KoiDto.Name"></label>
+        <input asp-for="KoiDto.Name" class="form-control" />
+        <span asp-validation-for="KoiDto.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="KoiDto.Variety" class="control-label"></label>
+        <select asp-for="KoiDto.Variety" class="form-control">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <span asp-validation-for="KoiDto.Variety" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="KoiDto.Age"></label>
+        <input asp-for="KoiDto.Age" type="number" class="form-control" />
+        <span asp-validation-for="KoiDto.Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="KoiDto.Description"></label>
+        <textarea asp-for="KoiDto.Description" class="form-control"></textarea>
+        <span asp-validation-for="KoiDto.Description" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="KoiDto.UserId" value="koiDto.UserId" />
+    <button type="submit" class="btn btn-primary">Register Koi</button>
+    <a href="/User/UserPage" style="text-decoration:none">Return Home Page</a>
+</form>

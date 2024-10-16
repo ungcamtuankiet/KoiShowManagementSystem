@@ -1,6 +1,6 @@
 ﻿@page
 @model KoiShowManagementSystem.Pages.Authen.RegisterModel
-<h2>Register</h2>
+<h2 class="register-page">Register</h2>
 
 <form method="post">
     <div class="form-group">
@@ -24,5 +24,16 @@
         <input asp-for="Input.Password" type="password" class="form-control" />
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
-    <button type="submit" class="btn btn-primary" asp-page="/Authen/Login">Login</button>
+    <a href="/Authen/Login" style="text-decoration:none">Return Login Page</a>
 </form>
+<style>
+    .form-group{
+        margin:15px 0;
+    }
+
+    .register-page {
+        width: 900px;
+        margin: auto;
+        text-align: center;
+    }
+</style>

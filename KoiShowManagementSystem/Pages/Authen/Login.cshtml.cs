@@ -16,7 +16,6 @@ namespace KoiShowManagementSystem.Pages.Authen
 
         [BindProperty]
         public LoginUserDto Input { get; set; } = new LoginUserDto();
-        public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {

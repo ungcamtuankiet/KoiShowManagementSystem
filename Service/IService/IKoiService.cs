@@ -11,7 +11,12 @@ namespace Service.IService
 {
     public interface IKoiService
     {
-        Task RegisterKoi(int koiId, int competitionId);
+        Task<KoiFish> GetKoiById(int id);
+        Task<IEnumerable<KoiFish>> GetAllKoiFish();
+        Task<Response> RegisterKoi(RegisterKoi registerKoiDto, int? userId);
         Task<IEnumerable<KoiFish>> GetKoiForCompetition(int competitionId);
+        Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId);
+        Task<Response> DeleteKoi(int id);
+        Task<Response> UpdateKoi(KoiFish koiFish);
     }
 }

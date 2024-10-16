@@ -18,6 +18,16 @@ namespace Repository.Repositories
         {
             _context = context;
         }
+        public async Task<IEnumerable<KoiFish>> GetAllKoiFish()
+        {
+            return await _context.KoiFishes.Where(k => k.Status == "Active").ToListAsync();
+        }
+        public async Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId)
+        {
+            return await _context.KoiFishes
+                                 .Where(k => k.UserId == userId)
+                                 .ToListAsync();
+        }
         public async Task<KoiFish?> GetKoiById(int koiId)
         {
             return await _context.KoiFishes.FindAsync(koiId);
@@ -31,9 +41,22 @@ namespace Repository.Repositories
                 .ToListAsync();
         }
 
-        public async Task AddKoiRegistration(KoiRegistration registration)
+        public async Task AddKoiRegistration(KoiFish koiFish)
         {
-            _context.KoiRegistrations.Add(registration);
+            await _context.KoiFishes.AddAsync(koiFish);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteKoi(int id)
+        {
+            var koiFish = await _context.KoiFishes.FirstOrDefaultAsync(k => k.Id == id);
+            _context.KoiFishes.Remove(koiFish);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateKoi(KoiFish koiFish)
+        {
+            _context.KoiFishes.Update(koiFish);
             await _context.SaveChangesAsync();
         }
     }
