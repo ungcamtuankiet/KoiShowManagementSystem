@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3092993B-D405-429F-8BA1-E2E067CE00CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{3092993B-D405-429F-8BA1-E2E067CE00CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{063DE88C-996C-4F4B-BE34-981FEBC3209B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{063DE88C-996C-4F4B-BE34-981FEBC3209B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiShowManagementSystem", "KoiShowManagementSystem\KoiShowManagementSystem.csproj", "{1DDA3F2B-CCF5-4A1D-B892-A12207FAED9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KoiShowManagementSystem", "KoiShowManagementSystem\KoiShowManagementSystem.csproj", "{1DDA3F2B-CCF5-4A1D-B892-A12207FAED9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

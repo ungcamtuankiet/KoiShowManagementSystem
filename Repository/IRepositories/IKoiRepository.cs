@@ -9,10 +9,12 @@ namespace Repository.IRepositories
 {
     public interface IKoiRepository
     {
-        Task<IEnumerable<KoiFish>> GetListKoiFish();
-        Task<KoiFish> GetKoiFishById(int id);
-        Task<KoiFish> RegisterKoi(KoiFish fish);
-        Task<KoiFish> UpdateKoi(KoiFish fish);
-        Task<KoiFish> DeleteKoi(KoiFish fish);
+        Task<KoiFish?> GetKoiById(int koiId);
+        Task<IEnumerable<KoiFish>> GetAllKoiFish();
+        Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId);
+        Task<IEnumerable<KoiFish>> GetAllKoiForCompetition(int competitionId);
+        Task AddKoiRegistration(KoiFish koiFish);
+        Task DeleteKoi(int id);
+        Task UpdateKoi(KoiFish koiFish);
     }
 }

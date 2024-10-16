@@ -1,0 +1,14 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Referee.RefereePageModel
+<h2>Welcome to Koi Exhibition Management System</h2>
+@if (Model.UserRole == "Referee")
+{
+    <form method="post" asp-page-handler="Logout">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+}
+else
+{
+    <p>Đây là trang Referee</p>
+    <p>Chào mừng bạn đến hệ thống!</p>
+}

@@ -1,0 +1,19 @@
+﻿@page
+@model AuthenticationPageModel
+
+<h2>Welcome to Koi Exhibition Management System</h2>
+
+<!-- Hiển thị thông tin và nút logout nếu người dùng là Member -->
+@if (Model.UserRole == "Member")
+{
+    <form method="post" asp-page-handler="Logout">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+    <a href="/Koi/RegisterKoi">Register Koi</a>
+    <a href="/Koi/MyKoiList">View My Koi List</a>
+}
+else
+{
+    <p>Đây là trang member</p>
+    <p>Chào mừng bạn đến hệ thống!</p>
+}

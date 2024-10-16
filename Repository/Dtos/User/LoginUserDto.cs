@@ -14,5 +14,6 @@ namespace Repository.Dtos.User
 
         [Required]
         public string Password { get; set; } = null!;
+        
     }
 }

@@ -9,39 +9,75 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = KoiShowManagementSystem
 build_property.RootNamespace = KoiShowManagementSystem
-build_property.ProjectDir = C:\Learning\PRN221\Project\Group_Project\KoiShowManagementSystem\
+build_property.ProjectDir = C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Learning\PRN221\Project\Group_Project\KoiShowManagementSystem
+build_property.MSBuildProjectDirectory = C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/Error.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Admin/AdminPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW5QYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Authen/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVuXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Authen/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVuXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Competition/CompetitionsModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25cQ29tcGV0aXRpb25zTW9kZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/Index.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/Privacy.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/KoiRegistrationModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXEtvaVJlZ2lzdHJhdGlvbk1vZGVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Referee/RefereePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVmZXJlZVxSZWZlcmVlUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/_ViewImports.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/StaffPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/User/UserPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxVc2VyUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/_ViewStart.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/Group_Project/KoiShowManagementSystem/Pages/Shared/_Layout.cshtml]
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g9pkwal720

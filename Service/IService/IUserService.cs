@@ -1,12 +1,13 @@
 ﻿using Repository.Dtos.Response;
 using Repository.Dtos.User;
+using Repository.Entites;
 
 namespace Service.IService
 {
     public interface IUserService
     {
-        Task<Response> RegisterUserAsync(RegisterUserDto userDto);
-        Task<Response> LoginAsync(LoginUserDto userDto);
-        Task<Response> UpdateUserAsync(UpdateUser updateUser);
+        Task<Response?> Login(LoginUserDto loginUserDto);
+        Task<Response?> Register(RegisterUserDto registerUserDto);
+        Task<User> GetUserByEmail(string email);
     }
 }
