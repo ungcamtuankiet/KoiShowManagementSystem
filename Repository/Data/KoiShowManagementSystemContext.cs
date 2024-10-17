@@ -104,6 +104,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
             entity.ToTable("KoiFish");
 
+            entity.Property(e => e.AvatarUrl).HasMaxLength(255);
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.RegistrationDate).HasColumnType("datetime");

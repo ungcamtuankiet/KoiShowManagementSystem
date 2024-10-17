@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http;
 using Repository.Dtos.Koi;
 using Repository.Dtos.Response;
 using Repository.Dtos.User;
@@ -62,11 +63,19 @@ namespace Service.Service
                     Data = null
                 };
             }
+            // Kiểm tra file ảnh
+            string avatarUrl = null;
+            if (registerKoiDto.Avatar != null)
+            {
+                // Gọi phương thức để lưu file và nhận đường dẫn
+                avatarUrl = await SaveKoiAvatar(registerKoiDto.Avatar);
+            }
             var koi = new KoiFish
             {
                 Name = registerKoiDto.Name,
                 Variety = registerKoiDto.Variety,
                 Age = registerKoiDto.Age,
+                AvatarUrl = avatarUrl,
                 Description = registerKoiDto.Description,
                 RegistrationDate = DateTime.Now,
                 CreatedAt = DateTime.Now,
@@ -108,11 +117,16 @@ namespace Service.Service
             };
         }
 
-        public async Task<Response> UpdateKoi(KoiFish koiFish)
+        public async Task<Response> UpdateKoi(UpdateKoi updateKoi, int id)
         {
-            var getKoi = await _koiRepository.GetKoiById(koiFish.Id);
+            var getKoi = await _koiRepository.GetKoiById(id);
             if (getKoi != null)
             {
+                getKoi.Name = updateKoi.Name;
+                getKoi.Variety = updateKoi.Variety;
+                getKoi.Age = updateKoi.Age;
+                getKoi.Description = updateKoi.Description;
+                getKoi.UpdatedAt = DateTime.Now;
                 await _koiRepository.UpdateKoi(getKoi);
                 return new Response()
                 {
@@ -132,6 +146,31 @@ namespace Service.Service
         private bool IsValidAgeKoi(int ageKoi)
         {
             return ageKoi > 0;
+        }
+
+        private async Task<string> SaveKoiAvatar(IFormFile avatar)
+        {
+            // Đường dẫn thư mục lưu ảnh
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/koi");
+
+            // Đảm bảo thư mục tồn tại
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            // Tạo tên file duy nhất dựa trên thời gian và tên gốc của file
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + avatar.FileName;
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            // Lưu file vào thư mục
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await avatar.CopyToAsync(fileStream);
+            }
+
+            // Trả về đường dẫn URL để lưu vào cơ sở dữ liệu
+            return "/images/koi/" + uniqueFileName; // Đường dẫn tương đối
         }
     }
 }
