@@ -25,6 +25,8 @@ public partial class KoiFish
 
     public DateTime? CreatedAt { get; set; }
 
+    public string? AvatarUrl { get; set; }
+
     public virtual ICollection<JudgeScore> JudgeScores { get; set; } = new List<JudgeScore>();
 
     public virtual ICollection<KoiRegistration> KoiRegistrations { get; set; } = new List<KoiRegistration>();

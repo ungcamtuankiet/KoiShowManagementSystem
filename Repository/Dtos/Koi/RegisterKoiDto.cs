@@ -1,4 +1,5 @@
-﻿using Repository.Enum;
+﻿using Microsoft.AspNetCore.Http;
+using Repository.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Repository.Dtos.Koi
         public string Variety { get; set; }
         public int Age { get; set; }
         public string Description { get; set; }
+        public IFormFile Avatar { get; set; }
         public int UserId { get; set; } // ID của người dùng đăng ký
     }
 }

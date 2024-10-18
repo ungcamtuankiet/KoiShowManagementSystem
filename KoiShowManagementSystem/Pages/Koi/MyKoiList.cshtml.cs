@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Repository.Dtos.Koi;
 using Repository.Entites;
 using Service.IService;
 
@@ -15,6 +16,8 @@ namespace KoiShowManagementSystem.Pages.Koi
         }
 
         public List<KoiFish> KoiFishList { get; set; }
+        public UpdateKoi UpdateKoi { get; set; }
+        public int Koi_Id { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -40,6 +43,21 @@ namespace KoiShowManagementSystem.Pages.Koi
             }
             var result = await _koiService.DeleteKoi(deleteKoi);
             if(result.Code == 0)
+            {
+                TempData["SuccessMessage"] = result.Message;
+                KoiFishList = await _koiService.GetKoiFishByUserIdAsync(userId.Value);
+                return Page();
+            }
+            TempData["ErrorMessage"] = result.Message;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostUpdateKoiAsync(int KoiId)
+        {
+            var result = await _koiService.UpdateKoi(UpdateKoi, KoiId);
+            Koi_Id = KoiId;
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (result.Code == 0)
             {
                 TempData["SuccessMessage"] = result.Message;
                 KoiFishList = await _koiService.GetKoiFishByUserIdAsync(userId.Value);

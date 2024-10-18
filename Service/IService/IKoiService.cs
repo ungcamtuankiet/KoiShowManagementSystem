@@ -17,6 +17,6 @@ namespace Service.IService
         Task<IEnumerable<KoiFish>> GetKoiForCompetition(int competitionId);
         Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId);
         Task<Response> DeleteKoi(int id);
-        Task<Response> UpdateKoi(KoiFish koiFish);
+        Task<Response> UpdateKoi(UpdateKoi updateKoi, int id);
     }
 }

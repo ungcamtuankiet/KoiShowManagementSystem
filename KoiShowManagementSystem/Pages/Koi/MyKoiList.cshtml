@@ -29,9 +29,14 @@
                     <td>@koi.Age</td>
                     <td>@koi.Description</td>
                     <td>@koi.RegistrationDate?.ToString("yyyy-MM-dd")</td>
-                    <td></td>
                     <td>
-                        <form method="post">
+                        <form method="post" asp-page-handler="LoadUpdateKoi">
+                            <input type="hidden" name="koiId" value="@koi.Id" />
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" asp-page-handler="DeleteKoi">
                             <input type="hidden" name="deleteKoi" value="@koi.Id" />
                             <button type="submit" onclick="return confirm('Are you sure you want to delete this Koi?')">Delete</button>
                         </form>
@@ -45,4 +50,29 @@
 else
 {
     <p>You have not registered any Koi fish yet.</p>
+}
+
+@if (Model.UpdateKoi != null)
+{
+    <h3>Update Koi</h3>
+    <form method="post" asp-page-handler="UpdateKoi">
+        <input type="hidden" name="KoiId" value="@Model.Koi_Id" />
+        <div>
+            <label>Name:</label>
+            <input type="text" name="UpdateKoi.Name" value="@Model.UpdateKoi.Name" />
+        </div>
+        <div>
+            <label>Variety:</label>
+            <input type="text" name="UpdateKoi.Variety" value="@Model.UpdateKoi.Variety" />
+        </div>
+        <div>
+            <label>Age:</label>
+            <input type="number" name="UpdateKoi.Age" value="@Model.UpdateKoi.Age" />
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="UpdateKoi.Description" value="@Model.UpdateKoi.Description" />
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
 }
