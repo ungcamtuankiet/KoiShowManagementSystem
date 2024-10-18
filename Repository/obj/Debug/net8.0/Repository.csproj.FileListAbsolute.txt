@@ -27,3 +27,18 @@ C:\Learning\PRN221\Project\KoiShowManagementSystem\Repository\obj\Debug\net8.0\r
 C:\Learning\PRN221\Project\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.pdb
 C:\Learning\PRN221\Project\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
 C:\Learning\PRN221\Project\KoiShowManagementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.deps.json
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.dll
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.pdb
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.dll
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\refint\Repository.dll
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.pdb
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll

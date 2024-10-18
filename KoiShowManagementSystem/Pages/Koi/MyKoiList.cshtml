@@ -16,6 +16,7 @@
                 <th>Age</th>
                 <th>Description</th>
                 <th>Registration Date</th>
+                <th>Details</th> <!-- Cột xem chi tiết -->
                 <td>Update Koi</td>
                 <td>Delete Koi</td>
             </tr>
@@ -29,6 +30,10 @@
                     <td>@koi.Age</td>
                     <td>@koi.Description</td>
                     <td>@koi.RegistrationDate?.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <!-- Liên kết dẫn đến trang chi tiết cá Koi -->
+                        <a asp-page="/Koi/ShowKoi" asp-route-koiId="@koi.Id">View Details</a>
+                    </td>
                     <td>
                         <form method="post" asp-page-handler="LoadUpdateKoi">
                             <input type="hidden" name="koiId" value="@koi.Id" />
@@ -45,6 +50,7 @@
             }
         </tbody>
     </table>
+
     <a href="/User/UserPage">Return Home Page</a>
 }
 else

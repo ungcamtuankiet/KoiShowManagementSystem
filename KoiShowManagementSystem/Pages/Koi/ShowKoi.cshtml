@@ -1,0 +1,48 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Koi.ShowKoiModel
+@{
+    ViewData["Title"] = Model.KoiFish?.Name ?? "Koi Fish Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.KoiFish == null)
+{
+    <p>Sorry, the Koi fish could not be found.</p>
+}
+else
+{
+    <div>
+        <h4>Koi Fish Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">ID</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Id</dd>
+
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Name</dd>
+
+            <dt class="col-sm-2">Variety</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Variety</dd>
+
+            <dt class="col-sm-2">Age</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Age</dd>
+
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Description</dd>
+
+            <dt class="col-sm-2">Status</dt>
+            <dd class="col-sm-10">@Model.KoiFish.Status</dd>
+
+            <dt class="col-sm-2">Registration Date</dt>
+            <dd class="col-sm-10">@Model.KoiFish.RegistrationDate?.ToString("d")</dd>
+
+            <dt class="col-sm-2">Avatar</dt>
+            <dd class="col-sm-10">
+                <img src="@Model.KoiFish.AvatarUrl" alt="@Model.KoiFish.Name" style="width:200px; height:auto;" />
+            </dd>
+        </dl>
+    </div>
+}
+
+<a asp-page="/Koi/Index">Back to Koi List</a>

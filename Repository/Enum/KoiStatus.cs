@@ -9,6 +9,6 @@ namespace Repository.Enum
     public enum KoiStatus
     {
         Avtive,
-
+        Active,
     }
 }
