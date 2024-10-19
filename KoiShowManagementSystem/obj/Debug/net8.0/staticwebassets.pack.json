@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png",
+      "PackagePath": "staticwebassets\\images\\koi\\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png"
+    },
+    {
+      "Id": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png",
+      "PackagePath": "staticwebassets\\images\\koi\\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png"
+    },
+    {
+      "Id": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png",
+      "PackagePath": "staticwebassets\\images\\koi\\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png"
+    },
+    {
       "Id": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

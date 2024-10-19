@@ -7,13 +7,13 @@ using Service.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache(); // Dùng ?? l?u tr? Session trong b? nh?
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Th?i gian h?t h?n c?a Session
+    options.IdleTimeout = TimeSpan.FromMinutes(30); //Th?i gian ho?t ??ng c?a Session
     options.Cookie.HttpOnly = true; // Ch? có th? truy c?p Session qua HTTP, không qua JavaScript
-    options.Cookie.IsEssential = true; // Cho phép Session ngay c? khi ng??i dùng không ch?p nh?n cookie
+    options.Cookie.IsEssential = true; // Cho phép Session ngay c? khi ng??i dùng không ch?p nh?n Cookie
 });
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -37,6 +37,8 @@ builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IKoiService, KoiService>();
 builder.Services.AddScoped<ICompetitionService, CompetitionService>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 
@@ -61,6 +63,7 @@ app.UseAuthorization();
 
 // Kích ho?t Session
 app.UseSession();
+app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {

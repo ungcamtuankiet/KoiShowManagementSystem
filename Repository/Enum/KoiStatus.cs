@@ -8,7 +8,8 @@ namespace Repository.Enum
 {
     public enum KoiStatus
     {
-        Avtive,
-
+        Approve,
+        Pending,
+        Reject
     }
 }

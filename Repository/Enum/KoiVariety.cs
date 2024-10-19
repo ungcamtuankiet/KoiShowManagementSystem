@@ -8,7 +8,15 @@ namespace Repository.Enum
 {
     public enum KoiVariety
     {
-        Male,
-        Female
+        Kohaku,
+        Sanke,
+        Showa,
+        Ogon,
+        Chagoi,
+        Bướm,
+        Shusui,
+        Tancho,
+        Utsuri,
+        Other
     }
 }

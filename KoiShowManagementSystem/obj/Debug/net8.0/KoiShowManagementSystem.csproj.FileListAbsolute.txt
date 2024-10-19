@@ -73,3 +73,6 @@ C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\obj\D
 C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\obj\Debug\net8.0\KoiShowManagementSystem.pdb
 C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\obj\Debug\net8.0\KoiShowManagementSystem.genruntimeconfig.cache
 C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\obj\Debug\net8.0\ref\KoiShowManagementSystem.dll
+C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\bin\Debug\net8.0\MailKit.dll
+C:\Learning\PRN221\Project\KoiShowManagementSystem\KoiShowManagementSystem\bin\Debug\net8.0\MimeKit.dll

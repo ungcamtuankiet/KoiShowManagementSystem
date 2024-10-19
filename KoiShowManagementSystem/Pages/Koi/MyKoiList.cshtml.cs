@@ -3,25 +3,30 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repository.Dtos.Koi;
 using Repository.Entites;
 using Service.IService;
+using Service.Service;
 
 namespace KoiShowManagementSystem.Pages.Koi
 {
     public class KoiListModel : PageModel
     {
         private readonly IKoiService _koiService;
+        private readonly IFileService _fileService;
 
-        public KoiListModel(IKoiService koiService)
+        public KoiListModel(IKoiService koiService, IFileService fileService)
         {
             _koiService = koiService;
+            _fileService = fileService;
         }
 
         public List<KoiFish> KoiFishList { get; set; }
-        public UpdateKoi UpdateKoi { get; set; }
+        public UpdateKoiDto UpdateKoi { get; set; }
+        public string fileName { get; set; }
         public int Koi_Id { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
+            var imageData = await _fileService.GetKoiAvatar(fileName);
 
             if (userId == null)
             {

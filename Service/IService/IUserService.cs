@@ -9,5 +9,6 @@ namespace Service.IService
         Task<Response?> Login(LoginUserDto loginUserDto);
         Task<Response?> Register(RegisterUserDto registerUserDto);
         Task<User> GetUserByEmail(string email);
+        Task<User> GetUserById(int? userId);
     }
 }

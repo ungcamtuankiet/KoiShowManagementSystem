@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Repository.Dtos.Koi;
 using Repository.Entites;
+using Repository.Enum;
 using Service.IService;
 
 namespace KoiShowManagementSystem.Pages.Koi
@@ -17,6 +19,19 @@ namespace KoiShowManagementSystem.Pages.Koi
 
         [BindProperty]
         public RegisterKoi KoiDto { get; set; } = new RegisterKoi();
+        public IEnumerable<SelectListItem> koiVarieties { get; set; }
+
+        public void OnGet()
+        {
+            koiVarieties = Enum.GetValues(typeof(KoiVariety))
+                               .Cast<KoiVariety>()
+                               .Select(v => new SelectListItem
+                               {
+                                   Value = v.ToString(),
+                                   Text = v.ToString()
+                               })
+                               .ToList();
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {

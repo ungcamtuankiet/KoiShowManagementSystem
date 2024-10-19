@@ -11,14 +11,21 @@ namespace Service.Service
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IEmailService _emailService;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IEmailService emailService)
         {
             _userRepository = userRepository;
+            _emailService = emailService;
         }
         public async Task<User> GetUserByEmail(string email)
         {
             return await _userRepository.GetUserByEmail(email);
+        }
+
+        public async Task<User> GetUserById(int? userId)
+        {
+            return await _userRepository.GetUserById(userId);
         }
         public async Task<Response?> Login(LoginUserDto loginUserDto)
         {
@@ -116,6 +123,7 @@ namespace Service.Service
                     CreatedAt = DateTime.Now
                 };
                 await _userRepository.RegisterUser(user);
+                await _emailService.SendEmailRegisterMemberAccount(registerUserDto.Email);
                 return new Response()
                 {
                     Code = 0,

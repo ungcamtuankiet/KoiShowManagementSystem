@@ -26,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVuXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Authen/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVuXExvZ291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Authen/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVuXFJlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,8 +46,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/KoiRegistrationModel.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXEtvaVJlZ2lzdHJhdGlvbk1vZGVsLmNzaHRtbA==
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/DeleteKoi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXERlbGV0ZUtvaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/MyKoiList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXE15S29pTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/RegisterKoi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXFJlZ2lzdGVyS29pLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/UpdateKoi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXFVwZGF0ZUtvaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Privacy.cshtml]

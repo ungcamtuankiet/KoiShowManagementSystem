@@ -16,6 +16,7 @@
                 <th>Age</th>
                 <th>Description</th>
                 <th>Registration Date</th>
+                <th>Image Koi</th>
                 <td>Update Koi</td>
                 <td>Delete Koi</td>
             </tr>
@@ -30,7 +31,10 @@
                     <td>@koi.Description</td>
                     <td>@koi.RegistrationDate?.ToString("yyyy-MM-dd")</td>
                     <td>
-                        <form method="post" asp-page-handler="LoadUpdateKoi">
+                        <img src="@koi.AvatarUrl" alt="Koi Image" />
+                    </td>
+                    <td>
+                        <form method="post" asp-page-handler="UpdateKoi">
                             <input type="hidden" name="koiId" value="@koi.Id" />
                             <button type="submit">Update</button>
                         </form>

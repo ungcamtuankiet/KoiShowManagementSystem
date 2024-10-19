@@ -19,10 +19,15 @@ namespace Service.Service
     public class KoiService : IKoiService
     {
         private readonly IKoiRepository _koiRepository;
-
-        public KoiService(IKoiRepository repository)
+        private readonly IFileService _fileService;
+        private readonly IUserService _userService;
+        private readonly IEmailService _emailService;
+        public KoiService(IKoiRepository repository, IFileService fileService, IUserService userService, IEmailService emailService)
         {
             _koiRepository = repository;
+            _fileService = fileService;
+            _userService = userService;
+            _emailService = emailService;
         }
 
         public async Task<KoiFish> GetKoiById(int id)
@@ -41,12 +46,18 @@ namespace Service.Service
         }
         public async Task<Response> RegisterKoi(RegisterKoi registerKoiDto, int? userId)
         {
-
-            if (string.IsNullOrEmpty(registerKoiDto.Name) ||
-            string.IsNullOrEmpty(registerKoiDto.Variety) ||
-            registerKoiDto.Age <= 0 ||
-            string.IsNullOrEmpty(registerKoiDto.Description))
+            var getUser = await _userService.GetUserById(userId);
+            if (string.IsNullOrEmpty(registerKoiDto.Name) || string.IsNullOrEmpty(registerKoiDto.Variety.ToString()) || registerKoiDto.Age <= 0 || string.IsNullOrEmpty(registerKoiDto.Description))
             {
+                if (registerKoiDto.Age <= 0)
+                {
+                    return new Response()
+                    {
+                        Code = 1,
+                        Message = "Age koi must be more than 0 and not null",
+                        Data = null
+                    };
+                }
                 return new Response()
                 {
                     Code = 1,
@@ -54,7 +65,7 @@ namespace Service.Service
                     Data = null
                 };
             }
-            if (!IsValidAgeKoi(registerKoiDto.Age))
+            if (registerKoiDto.Age < 0)
             {
                 return new Response()
                 {
@@ -68,21 +79,22 @@ namespace Service.Service
             if (registerKoiDto.Avatar != null)
             {
                 // Gọi phương thức để lưu file và nhận đường dẫn
-                avatarUrl = await SaveKoiAvatar(registerKoiDto.Avatar);
+                avatarUrl = await _fileService.SaveKoiAvatar(registerKoiDto.Avatar);
             }
             var koi = new KoiFish
             {
                 Name = registerKoiDto.Name,
-                Variety = registerKoiDto.Variety,
+                Variety = KoiVariety.Kohaku.ToString(),
                 Age = registerKoiDto.Age,
                 AvatarUrl = avatarUrl,
                 Description = registerKoiDto.Description,
                 RegistrationDate = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                Status = KoiStatus.Avtive.ToString(),
+                Status = KoiStatus.Pending.ToString(),
                 UserId = userId // ID của người dùng đăng ký
             };
             await _koiRepository.AddKoiRegistration(koi);
+            await _emailService.SendEmailAddNewKoi(getUser.Email);
             return new Response()
             {
                 Code = 0,
@@ -102,6 +114,12 @@ namespace Service.Service
             if (getKoi != null)
             {
                 await _koiRepository.DeleteKoi(id);
+                // Nếu có avatar, xóa tấm hình trước khi xóa KoiFish
+                if (!string.IsNullOrEmpty(getKoi.AvatarUrl))
+                {
+                    // Gọi dịch vụ xóa file
+                    await _fileService.DeleteImage(getKoi.AvatarUrl);
+                }
                 return new Response()
                 {
                     Code = 0,
@@ -117,9 +135,15 @@ namespace Service.Service
             };
         }
 
-        public async Task<Response> UpdateKoi(UpdateKoi updateKoi, int id)
+        public async Task<Response> UpdateKoi(UpdateKoiDto updateKoi, int id)
         {
             var getKoi = await _koiRepository.GetKoiById(id);
+            string avatarUrl = null;
+            if (updateKoi.Avatar != null)
+            {
+                // Gọi phương thức để lưu file và nhận đường dẫn
+                avatarUrl = await _fileService.SaveKoiAvatar(updateKoi.Avatar);
+            }
             if (getKoi != null)
             {
                 getKoi.Name = updateKoi.Name;
@@ -127,6 +151,8 @@ namespace Service.Service
                 getKoi.Age = updateKoi.Age;
                 getKoi.Description = updateKoi.Description;
                 getKoi.UpdatedAt = DateTime.Now;
+                getKoi.AvatarUrl = avatarUrl;
+                getKoi.Status = KoiStatus.Pending.ToString();
                 await _koiRepository.UpdateKoi(getKoi);
                 return new Response()
                 {
@@ -141,36 +167,6 @@ namespace Service.Service
                 Message = "Koi is not exist",
                 Data = null
             };
-        }
-
-        private bool IsValidAgeKoi(int ageKoi)
-        {
-            return ageKoi > 0;
-        }
-
-        private async Task<string> SaveKoiAvatar(IFormFile avatar)
-        {
-            // Đường dẫn thư mục lưu ảnh
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/koi");
-
-            // Đảm bảo thư mục tồn tại
-            if (!Directory.Exists(uploadsFolder))
-            {
-                Directory.CreateDirectory(uploadsFolder);
-            }
-
-            // Tạo tên file duy nhất dựa trên thời gian và tên gốc của file
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + avatar.FileName;
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            // Lưu file vào thư mục
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await avatar.CopyToAsync(fileStream);
-            }
-
-            // Trả về đường dẫn URL để lưu vào cơ sở dữ liệu
-            return "/images/koi/" + uniqueFileName; // Đường dẫn tương đối
         }
     }
 }

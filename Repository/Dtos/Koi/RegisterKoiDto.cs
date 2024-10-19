@@ -11,7 +11,7 @@ namespace Repository.Dtos.Koi
     public class RegisterKoi
     {
         public string Name { get; set; }
-        public string Variety { get; set; }
+        public KoiVariety Variety { get; set; }
         public int Age { get; set; }
         public string Description { get; set; }
         public IFormFile Avatar { get; set; }

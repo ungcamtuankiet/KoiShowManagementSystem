@@ -38,7 +38,7 @@ namespace Repository.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
         }
 
-        public async Task<User?> GetUserById(int id)
+        public async Task<User?> GetUserById(int? id)
         {
             return await _context.Users.FindAsync(id);
         }

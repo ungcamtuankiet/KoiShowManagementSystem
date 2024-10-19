@@ -1,4 +1,48 @@
 ﻿@page
 @model KoiShowManagementSystem.Pages.Koi.UpdateKoiModel
 @{
+    ViewData["Title"] = "UpdateKoi";
 }
+
+<h2>Update Koi</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="UpdateKoiDto.Name"></label>
+        <input asp-for="UpdateKoiDto.Name" class="form-control" />
+        <span asp-validation-for="UpdateKoiDto.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UpdateKoiDto.Variety" class="control-label"></label>
+        <select asp-for="UpdateKoiDto.Variety" class="form-control" asp-items="Model.KoiVarieties">
+            <option value="">-- Select Koi Variety --</option>
+        </select>
+        <span asp-validation-for="UpdateKoiDto.Variety" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UpdateKoiDto.Age"></label>
+        <input asp-for="UpdateKoiDto.Age" type="number" class="form-control" />
+        <span asp-validation-for="UpdateKoiDto.Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UpdateKoiDto.Description"></label>
+        <textarea asp-for="UpdateKoiDto.Description" class="form-control"></textarea>
+        <span asp-validation-for="UpdateKoiDto.Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Current Avatar:</label>
+        <img src="@Model.UpdateKoiDto.Avatar" alt="Koi Avatar" style="max-width: 200px; max-height: 200px;" />
+    </div>
+
+    <div class="form-group">
+        <label for="avatar">Change Avatar:</label>
+        <input type="file" name="UpdateKoiDto.Avatar" id="avatar" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Koi</button>
+    <a href="/User/UserPage" class="btn btn-secondary">Cancel</a>
+</form>
