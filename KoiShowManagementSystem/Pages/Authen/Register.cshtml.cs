@@ -38,7 +38,7 @@ namespace KoiShowManagementSystem.Pages.Authen
             }
             catch (Exception ex)
             {
-                TempData[SuccessMessage] = ex.Message;
+                TempData["SuccessMessage"] = ex.Message;
                 return Page();
             }
         }

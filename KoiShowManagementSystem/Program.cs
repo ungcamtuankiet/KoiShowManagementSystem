@@ -1,5 +1,6 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Repository.Data;
+using Repository;
 using Repository.IRepositories;
 using Repository.Repositories;
 using Service.IService;
@@ -13,8 +14,9 @@ builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); //Th?i gian ho?t ??ng c?a Session
     options.Cookie.HttpOnly = true; // Ch? có th? truy c?p Session qua HTTP, không qua JavaScript
-    options.Cookie.IsEssential = true; // Cho phép Session ngay c? khi ng??i dùng không ch?p nh?n Cookie
+    options.Cookie.IsEssential = true; // Cho phép Session ngay c? khi ng??i dùng không ???c ch?p nh?n Cookie
 });
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -32,6 +34,7 @@ builder.Services.AddDbContext<KoiShowManagementSystemContext>(option =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IKoiRepository, KoiRepository>();
 builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // DI Service
 builder.Services.AddScoped<IUserService, UserService>();
@@ -39,6 +42,9 @@ builder.Services.AddScoped<IKoiService, KoiService>();
 builder.Services.AddScoped<ICompetitionService, CompetitionService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IStaffService, StaffService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 

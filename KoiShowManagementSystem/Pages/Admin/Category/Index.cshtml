@@ -1,0 +1,32 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Category.IndexModel
+@{
+}
+<h2>Category List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.Categories)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>@category.Status</td>
+                <td>
+                    <a asp-page="/Admin/Category/Edit" asp-route-id="@category.Id">Edit</a> |
+                    <a asp-page="/Admin/Category/Delete" asp-route-id="@category.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-page="/Admin/Category/Create">Create New Category</a>
+
+

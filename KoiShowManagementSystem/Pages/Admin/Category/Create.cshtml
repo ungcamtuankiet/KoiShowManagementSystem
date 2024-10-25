@@ -1,0 +1,17 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Category.CreateModel
+@{
+}
+<h2>Create Category</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Category.Name"></label>
+        <input asp-for="Category.Name" class="form-control" />
+        <span asp-validation-for="Category.Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<a asp-page="/Admin/Category/Index" class="btn btn-secondary">Back to List</a>

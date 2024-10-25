@@ -11,5 +11,6 @@ namespace Repository.IRepositories
     {
         Task<IEnumerable<Competition>> GetCompetitionsByStatus(string status);
         Task<Competition?> GetCompetitionById(int id);
+        Task CreateCompetition(Competition competition);
     }
 }

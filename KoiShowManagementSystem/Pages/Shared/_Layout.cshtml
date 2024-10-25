@@ -27,7 +27,28 @@
 
                 <!-- Navbar Links -->
                 <div class="navbar-collapse collapse">
-
+                    <ul class="menu">
+                        <li><a href="#">4th Virtual Koi Show</a></li>
+                        <li>
+                            <a href="#">Previous Shows</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="#">Virtual Koi Shows</a>
+                                    <ul class="submenu">
+                                        <li><a href="#">1st Virtual Koi Show</a></li>
+                                        <li><a href="#">2nd Virtual Koi Show</a></li>
+                                        <li><a href="#">3rd Virtual Koi Show</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Virtual Young Koi Shows</a></li>
+                                <li><a href="#">Sekiguchi Grow Out Contests</a></li>
+                                <li><a href="#">Taniguchi Grow Out Contests</a></li>
+                                <li><a href="#">Izumiya Growout 2022</a></li>
+                                <li><a href="#">Izumiya/Marusaka Growout 2023</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                     <ul class="navbar-nav ms-auto">
                         <!-- Conditional Login/Register or Logout buttons aligned to the right -->
                         @if (!string.IsNullOrEmpty(Context.Session.GetString("UserRole")))
@@ -83,3 +104,62 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    nav {
+        background-color: #bf0c2d;
+        padding: 10px;
+    }
+
+    .menu {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .menu > li {
+        position: relative;
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        display: block;
+    }
+
+    .menu a:hover {
+        background-color: #d21434;
+    }
+
+    .submenu {
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #bf0c2d;
+        display: none;
+        padding: 0;
+    }
+
+    .submenu li {
+        width: 200px;
+    }
+
+    .submenu a {
+        padding: 10px 15px;
+    }
+
+    .menu li:hover .submenu {
+        display: block;
+    }
+</style>

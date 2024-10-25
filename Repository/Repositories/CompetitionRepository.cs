@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repository.Data;
 using Repository.Entites;
 using Repository.IRepositories;
 using System;
@@ -29,6 +28,12 @@ namespace Repository.Repositories
         public async Task<Competition?> GetCompetitionById(int id)
         {
             return await _context.Competitions.FindAsync(id);
+        }
+
+        public async Task CreateCompetition(Competition competition)
+        {
+            await _context.Competitions.AddAsync(competition);
+            await _context.SaveChangesAsync();
         }
     }
 }

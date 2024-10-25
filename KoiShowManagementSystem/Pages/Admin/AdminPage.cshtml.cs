@@ -1,20 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Service.IService;
 
 namespace KoiShowManagementSystem.Pages.Admin
 {
     public class AdminPageModel : PageModel
     {
-        public string? UserRole { get; private set; }
+        private readonly IAuthService _authService;
 
-        public void OnGet()
+        public AdminPageModel(IAuthService authService)
         {
-            UserRole = HttpContext.Session.GetString("UserRole");
+            _authService = authService;
         }
 
-        public IActionResult OnPostLogout()
+        public string? UserRole { get; private set; }
+
+        public async Task<IActionResult> OnGet()
         {
-            HttpContext.Session.Clear();
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole == "Admin")
+            {
+                UserRole = await _authService.GetUserRole("AdminRole");
+                return Page();
+            }
+            TempData["ErrorMessage"] = "You don't have permission to access this page";
+            await _authService.ClearSession();
+            return RedirectToPage("/Authen/Login");
+        }
+
+        public async Task<IActionResult> OnPostLogout()
+        {
+            await _authService.ClearSession();
             return RedirectToPage("/Index");
         }
     }

@@ -21,11 +21,22 @@ namespace Service.Service
             // Kiểm tra nếu file không tồn tại
             if (!System.IO.File.Exists(filePath))
             {
-                return null;
+                // Bạn có thể trả về null, hoặc một mảng byte rỗng, hoặc ném ra một ngoại lệ (exception)
+                return null; // Hoặc throw new FileNotFoundException("File not found.");
             }
 
-            // Đọc file và trả về dưới dạng byte[]
-            return await System.IO.File.ReadAllBytesAsync(filePath);
+            try
+            {
+                // Đọc file và trả về dưới dạng byte[]
+                return await System.IO.File.ReadAllBytesAsync(filePath);
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu xảy ra lỗi khi đọc file
+                // Bạn có thể ghi log hoặc trả về thông báo lỗi
+                Console.WriteLine($"Error reading file: {ex.Message}");
+                return null;
+            }
         }
 
         public async Task<string> SaveKoiAvatar(IFormFile file)

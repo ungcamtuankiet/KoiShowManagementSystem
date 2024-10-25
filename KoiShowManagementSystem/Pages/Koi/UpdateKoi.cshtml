@@ -15,16 +15,16 @@
 
     <div class="form-group">
         <label asp-for="UpdateKoiDto.Variety" class="control-label"></label>
-        <select asp-for="UpdateKoiDto.Variety" class="form-control" asp-items="Model.KoiVarieties">
+        <select asp-for="UpdateKoiDto.Variety" class="form-control" asp-items="Model.koiVarieties">
             <option value="">-- Select Koi Variety --</option>
         </select>
         <span asp-validation-for="UpdateKoiDto.Variety" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="UpdateKoiDto.Age"></label>
-        <input asp-for="UpdateKoiDto.Age" type="number" class="form-control" />
-        <span asp-validation-for="UpdateKoiDto.Age" class="text-danger"></span>
+        <label asp-for="UpdateKoiDto.Size"></label>
+        <input asp-for="UpdateKoiDto.Size" type="number" class="form-control" />
+        <span asp-validation-for="UpdateKoiDto.Size" class="text-danger"></span>
     </div>
 
     <div class="form-group">

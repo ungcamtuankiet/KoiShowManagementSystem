@@ -2,3 +2,11 @@
 @model KoiShowManagementSystem.Pages.Koi.DeleteKoiModel
 @{
 }
+<form method="post">
+    <!-- Ẩn ID Koi cần xóa trong form -->
+    <input type="hidden" asp-for="KoiId" value="@Model.KoiId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="/Koi/MyKoiList" class="btn btn-secondary">Cancel</a>
+</form>
+
+

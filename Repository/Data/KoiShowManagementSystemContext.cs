@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Repository.Entites;
 
-namespace Repository.Data;
+namespace Repository;
 
 public partial class KoiShowManagementSystemContext : DbContext
 {
@@ -38,7 +38,7 @@ public partial class KoiShowManagementSystemContext : DbContext
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC073873E8C0");
+            entity.HasKey(e => e.Id).HasName("PK__Category__3214EC074FA6B999");
 
             entity.ToTable("Category");
 
@@ -50,7 +50,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<Competition>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Competit__3214EC07D13CF32B");
+            entity.HasKey(e => e.Id).HasName("PK__Competit__3214EC0761B5A4F7");
 
             entity.ToTable("Competition");
 
@@ -70,7 +70,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<JudgeScore>(entity =>
         {
-            entity.HasKey(e => e.ScoreId).HasName("PK__JudgeSco__7DD229D1BCF98341");
+            entity.HasKey(e => e.ScoreId).HasName("PK__JudgeSco__7DD229D112F378D5");
 
             entity.ToTable("JudgeScore");
 
@@ -100,7 +100,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<KoiFish>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__KoiFish__3214EC07598CDE14");
+            entity.HasKey(e => e.Id).HasName("PK__KoiFish__3214EC07D2C543C5");
 
             entity.ToTable("KoiFish");
 
@@ -120,7 +120,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<KoiRegistration>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC07AE8BBB6E");
+            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC07AEA29753");
 
             entity.ToTable("KoiRegistration");
 
@@ -147,7 +147,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<Result>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC07C608CDF5");
+            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC0710F565B8");
 
             entity.ToTable("Result");
 
@@ -175,7 +175,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3214EC07D6E950BA");
+            entity.HasKey(e => e.Id).HasName("PK__User__3214EC070C7BDA9F");
 
             entity.ToTable("User");
 

@@ -47,9 +47,9 @@ namespace Service.Service
         public async Task<Response> RegisterKoi(RegisterKoi registerKoiDto, int? userId)
         {
             var getUser = await _userService.GetUserById(userId);
-            if (string.IsNullOrEmpty(registerKoiDto.Name) || string.IsNullOrEmpty(registerKoiDto.Variety.ToString()) || registerKoiDto.Age <= 0 || string.IsNullOrEmpty(registerKoiDto.Description))
+            if (string.IsNullOrEmpty(registerKoiDto.Name) || string.IsNullOrEmpty(registerKoiDto.Variety.ToString()) || registerKoiDto.Size <= 0 || string.IsNullOrEmpty(registerKoiDto.Description))
             {
-                if (registerKoiDto.Age <= 0)
+                if (registerKoiDto.Size <= 0)
                 {
                     return new Response()
                     {
@@ -65,7 +65,7 @@ namespace Service.Service
                     Data = null
                 };
             }
-            if (registerKoiDto.Age < 0)
+            if (registerKoiDto.Size < 0)
             {
                 return new Response()
                 {
@@ -85,7 +85,7 @@ namespace Service.Service
             {
                 Name = registerKoiDto.Name,
                 Variety = KoiVariety.Kohaku.ToString(),
-                Age = registerKoiDto.Age,
+                Size = registerKoiDto.Size,
                 AvatarUrl = avatarUrl,
                 Description = registerKoiDto.Description,
                 RegistrationDate = DateTime.Now,
@@ -148,7 +148,7 @@ namespace Service.Service
             {
                 getKoi.Name = updateKoi.Name;
                 getKoi.Variety = updateKoi.Variety;
-                getKoi.Age = updateKoi.Age;
+                getKoi.Size = updateKoi.Size;
                 getKoi.Description = updateKoi.Description;
                 getKoi.UpdatedAt = DateTime.Now;
                 getKoi.AvatarUrl = avatarUrl;

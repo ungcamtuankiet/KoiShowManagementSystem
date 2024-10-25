@@ -12,7 +12,7 @@ namespace Repository.Dtos.Koi
     {
         public string Name { get; set; }
         public KoiVariety Variety { get; set; }
-        public int Age { get; set; }
+        public int Size { get; set; }
         public string Description { get; set; }
         public IFormFile Avatar { get; set; }
         public int UserId { get; set; } // ID của người dùng đăng ký
