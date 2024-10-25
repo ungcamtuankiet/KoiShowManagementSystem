@@ -29,8 +29,27 @@ namespace KoiShowManagementSystem.Pages.Koi
         public int Id { get; set; }
         public IEnumerable<SelectListItem> koiVarieties { get; set; }
         public string fileName { get; set; }
-        public async void OnGet()
+        public IActionResult GetKoiAvatarImage(string fileName)
         {
+            var avatarBytes = _fileService.GetKoiAvatar(fileName).Result;
+
+            if (avatarBytes == null)
+            {
+                return NotFound(); 
+            }
+
+            return File(avatarBytes, "image/jpeg"); 
+        }
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            var userRole = await _authService.GetUserRole(UserRole);
+            var getKoi = await _koiService.GetKoiById(id);
+            if (userRole != "Member")
+            {
+                await _authService.ClearSession();
+                return RedirectToPage("/Index");
+            }
+            var koi = await _koiService.GetKoiById(id);
             UserRole = await _authService.GetUserRole("AdminRole");
             koiVarieties = Enum.GetValues(typeof(KoiVariety))
                                .Cast<KoiVariety>()
@@ -40,34 +59,6 @@ namespace KoiShowManagementSystem.Pages.Koi
                                    Text = v.ToString()
                                })
                                .ToList();
-        }
-        public async Task<IActionResult> OnPostLogout()
-        {
-            await _authService.ClearSession();
-            return RedirectToPage("/Index");
-        }
-        public IActionResult GetKoiAvatarImage(string fileName)
-        {
-            var avatarBytes = _fileService.GetKoiAvatar(fileName).Result;
-
-            if (avatarBytes == null)
-            {
-                return NotFound(); // Tr? v? 404 n?u không tìm th?y ?nh
-            }
-
-            // Tr? v? file ?nh
-            return File(avatarBytes, "image/jpeg"); // Ho?c "image/png" tùy lo?i ?nh
-        }
-        public async Task<IActionResult> OnGetAsync(int id)
-        {
-            var userRole = await _authService.GetUserRole(UserRole);
-            var getKoi = await _koiService.GetKoiById(id);
-            if (userRole != "Admin")
-            {
-                return RedirectToPage("/Index");
-            }
-            var koi = await _koiService.GetKoiById(id);
-
             if (koi == null)
             {
                 return NotFound();
@@ -84,22 +75,31 @@ namespace KoiShowManagementSystem.Pages.Koi
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             var response = await _koiService.UpdateKoi(UpdateKoiDto, id);
 
             if (response.Code == 0)
             {
                 TempData["SuccessMessage"] = response.Message;
-                return RedirectToPage("/Category/Index");
+                return RedirectToPage("/Koi/MyKoiList");
             }
-
+            var koi = await _koiService.GetKoiById(id);
+            UserRole = await _authService.GetUserRole("AdminRole");
+            koiVarieties = Enum.GetValues(typeof(KoiVariety))
+                               .Cast<KoiVariety>()
+                               .Select(v => new SelectListItem
+                               {
+                                   Value = v.ToString(),
+                                   Text = v.ToString()
+                               })
+                               .ToList();
             TempData["ErrorMessage"] = response.Message;
             return Page();
 
+        }
+        public async Task<IActionResult> OnPostLogout()
+        {
+            await _authService.ClearSession();
+            return RedirectToPage("/Index");
         }
     }
 }

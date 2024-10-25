@@ -24,7 +24,7 @@ namespace KoiShowManagementSystem.Pages.Category
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == "Admin")
+            if (userRole == "Member")
             {
                 var response = await _categoryService.GetCategoriesAsync();
                 var category = await _categoryService.GetCategoryById(id);

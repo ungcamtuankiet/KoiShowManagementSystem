@@ -18,6 +18,10 @@ namespace Service.Service
             _userRepository = userRepository;
             _emailService = emailService;
         }
+        public async Task<IList<User>> GetAll()
+        {
+            return await _userRepository.GetAll();
+        }
         public async Task<User> GetUserByEmail(string email)
         {
             return await _userRepository.GetUserByEmail(email);

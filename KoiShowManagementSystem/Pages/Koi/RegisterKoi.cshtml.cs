@@ -6,25 +6,31 @@ using Repository.Dtos.Koi;
 using Repository.Entites;
 using Repository.Enum;
 using Service.IService;
+using Service.Service;
 
 namespace KoiShowManagementSystem.Pages.Koi
 {
     public class RegisterKoiModel : PageModel
     {
         private readonly IKoiService _koiService;
+        private readonly IAuthService _authService;
 
-        public RegisterKoiModel(IKoiService koiService)
+        public RegisterKoiModel(IKoiService koiService, IAuthService authService)
         {
             _koiService = koiService;
+            _authService = authService;
         }
 
         [BindProperty]
         public RegisterKoi KoiDto { get; set; } = new RegisterKoi();
         public IEnumerable<SelectListItem> koiVarieties { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            koiVarieties = Enum.GetValues(typeof(KoiVariety))
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole == "Member")
+            {
+                koiVarieties = Enum.GetValues(typeof(KoiVariety))
                                .Cast<KoiVariety>()
                                .Select(v => new SelectListItem
                                {
@@ -32,6 +38,11 @@ namespace KoiShowManagementSystem.Pages.Koi
                                    Text = v.ToString()
                                })
                                .ToList();
+                return Page();
+            }
+            TempData["ErrorMessage"] = "You don't have permission to access this page";
+            await _authService.ClearSession();
+            return RedirectToPage("/Authen/Login");
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -47,11 +58,24 @@ namespace KoiShowManagementSystem.Pages.Koi
             var response = await _koiService.RegisterKoi(KoiDto, userId);
             if (response.Code != 0)
             {
+                koiVarieties = Enum.GetValues(typeof(KoiVariety))
+                               .Cast<KoiVariety>()
+                               .Select(v => new SelectListItem
+                               {
+                                   Value = v.ToString(),
+                                   Text = v.ToString()
+                               })
+                               .ToList();
                 TempData["ErrorMessage"] = response.Message;
                 return Page();
             }
             TempData["SuccessMessage"] = response.Message;
-            return Page();
+            return RedirectToPage("/Koi/MyKoiList");
+        }
+        public async Task<IActionResult> OnPostLogout()
+        {
+            await _authService.ClearSession();
+            return RedirectToPage("/Index");
         }
     }
 }

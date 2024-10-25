@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ofqcacRDb9LzPscgLAnptspQJHWIMd+mf3s0QtBgIaA=",
+  "Hash": "gcA3qCfr23Pk9BsLpiQ0SS9Vd7ulHWV1jbf4zfntkIQ=",
   "Source": "KoiShowManagementSystem",
   "BasePath": "_content/KoiShowManagementSystem",
   "Mode": "Default",
@@ -93,12 +93,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png",
+      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png",
       "SourceId": "KoiShowManagementSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\",
       "BasePath": "_content/KoiShowManagementSystem",
-      "RelativePath": "images/koi/0cd9f98b-0198-467b-b841-12efbbb8676f_a.png",
+      "RelativePath": "images/koi/1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,15 +109,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\koi\\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png"
+      "OriginalItemSpec": "wwwroot\\images\\koi\\1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png"
     },
     {
-      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png",
+      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png",
       "SourceId": "KoiShowManagementSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\",
       "BasePath": "_content/KoiShowManagementSystem",
-      "RelativePath": "images/koi/a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png",
+      "RelativePath": "images/koi/92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,15 +128,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\koi\\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png"
+      "OriginalItemSpec": "wwwroot\\images\\koi\\92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png"
     },
     {
-      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png",
+      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png",
       "SourceId": "KoiShowManagementSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\",
       "BasePath": "_content/KoiShowManagementSystem",
-      "RelativePath": "images/koi/b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png",
+      "RelativePath": "images/koi/9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\koi\\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png"
+      "OriginalItemSpec": "wwwroot\\images\\koi\\9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png"
     },
     {
       "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\js\\site.js",

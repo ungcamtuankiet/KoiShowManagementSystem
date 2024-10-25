@@ -12,11 +12,11 @@ namespace Service.IService
     public interface IKoiService
     {
         Task<KoiFish> GetKoiById(int id);
-        Task<IEnumerable<KoiFish>> GetAllKoiFish();
+        Task<IList<KoiFish>> GetAllKoiFish();
         Task<Response> RegisterKoi(RegisterKoi registerKoiDto, int? userId);
         Task<IEnumerable<KoiFish>> GetKoiForCompetition(int competitionId);
         Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId);
         Task<Response> DeleteKoi(int id);
-        Task<Response> UpdateKoi(UpdateKoiDto updateKoi, int id);
+        Task<Response> UpdateKoi(UpdateKoiDto koiFish, int id);
     }
 }

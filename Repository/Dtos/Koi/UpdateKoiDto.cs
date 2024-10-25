@@ -9,6 +9,7 @@ namespace Repository.Dtos.Koi
 {
     public class UpdateKoiDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Variety { get; set; }
         public int? Size { get; set; }

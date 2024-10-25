@@ -17,9 +17,9 @@ namespace Repository.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<KoiFish>> GetAllKoiFish()
+        public async Task<IList<KoiFish>> GetAllKoiFish()
         {
-            return await _context.KoiFishes.Where(k => k.Status == "Active").ToListAsync();
+            return await _context.KoiFishes.Where(k => k.Status == "Active").Include(k => k.User).ToListAsync();
         }
         public async Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId)
         {

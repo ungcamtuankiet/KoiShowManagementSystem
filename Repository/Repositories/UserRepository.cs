@@ -17,7 +17,10 @@ namespace Repository.Repositories
         {
             _context = context;
         }
-
+        public async Task<IList<User>> GetAll()
+        {
+            return await _context.Users.ToListAsync();
+        }
         public async Task<User> GetUserByEmail(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);

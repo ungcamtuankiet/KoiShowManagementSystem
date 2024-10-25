@@ -32,12 +32,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png))">
       <SourceType>Package</SourceType>
       <SourceId>KoiShowManagementSystem</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/KoiShowManagementSystem</BasePath>
-      <RelativePath>images/koi/0cd9f98b-0198-467b-b841-12efbbb8676f_a.png</RelativePath>
+      <RelativePath>images/koi/1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -46,14 +46,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\0cd9f98b-0198-467b-b841-12efbbb8676f_a.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\1e765dc3-246a-4044-9694-ee4f5bc3365c_a.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png))">
       <SourceType>Package</SourceType>
       <SourceId>KoiShowManagementSystem</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/KoiShowManagementSystem</BasePath>
-      <RelativePath>images/koi/a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png</RelativePath>
+      <RelativePath>images/koi/92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -62,14 +62,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\a584d1cd-7a43-4c5b-8554-00af2c0f99f1_a.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\92f2e360-10eb-4ee0-bb00-165c9e536c3e_a.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png))">
       <SourceType>Package</SourceType>
       <SourceId>KoiShowManagementSystem</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/KoiShowManagementSystem</BasePath>
-      <RelativePath>images/koi/b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png</RelativePath>
+      <RelativePath>images/koi/9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -78,7 +78,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\b69c95eb-0f70-4121-ae8e-df662dac7ff1_a.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\koi\9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>

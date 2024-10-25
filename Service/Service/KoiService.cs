@@ -36,7 +36,7 @@ namespace Service.Service
             return getKoi;
         }
 
-        public async Task<IEnumerable<KoiFish>> GetAllKoiFish()
+        public async Task<IList<KoiFish>> GetAllKoiFish()
         {
             return await _koiRepository.GetAllKoiFish();
         }
@@ -47,14 +47,15 @@ namespace Service.Service
         public async Task<Response> RegisterKoi(RegisterKoi registerKoiDto, int? userId)
         {
             var getUser = await _userService.GetUserById(userId);
-            if (string.IsNullOrEmpty(registerKoiDto.Name) || string.IsNullOrEmpty(registerKoiDto.Variety.ToString()) || registerKoiDto.Size <= 0 || string.IsNullOrEmpty(registerKoiDto.Description))
+            string avatarUrl = null;
+            if (string.IsNullOrEmpty(registerKoiDto.Name) || string.IsNullOrEmpty(registerKoiDto.Variety.ToString()) || registerKoiDto.Size <= 0 || string.IsNullOrEmpty(registerKoiDto.Description) || registerKoiDto.Avatar == null)
             {
                 if (registerKoiDto.Size <= 0)
                 {
                     return new Response()
                     {
                         Code = 1,
-                        Message = "Age koi must be more than 0 and not null",
+                        Message = "Size koi must be more than 0 and not null",
                         Data = null
                     };
                 }
@@ -65,22 +66,9 @@ namespace Service.Service
                     Data = null
                 };
             }
-            if (registerKoiDto.Size < 0)
-            {
-                return new Response()
-                {
-                    Code = 1,
-                    Message = "Age koi must be more than 0",
-                    Data = null
-                };
-            }
+
             // Kiểm tra file ảnh
-            string avatarUrl = null;
-            if (registerKoiDto.Avatar != null)
-            {
-                // Gọi phương thức để lưu file và nhận đường dẫn
-                avatarUrl = await _fileService.SaveKoiAvatar(registerKoiDto.Avatar);
-            }
+            avatarUrl = await _fileService.SaveKoiAvatar(registerKoiDto.Avatar);
             var koi = new KoiFish
             {
                 Name = registerKoiDto.Name,
@@ -139,11 +127,27 @@ namespace Service.Service
         {
             var getKoi = await _koiRepository.GetKoiById(id);
             string avatarUrl = null;
-            if (updateKoi.Avatar != null)
+            if (string.IsNullOrEmpty(updateKoi.Name) || string.IsNullOrEmpty(updateKoi.Variety.ToString()) || updateKoi.Size <= 0 || string.IsNullOrEmpty(updateKoi.Description) || updateKoi.Avatar == null)
             {
-                // Gọi phương thức để lưu file và nhận đường dẫn
-                avatarUrl = await _fileService.SaveKoiAvatar(updateKoi.Avatar);
+                if (updateKoi.Size <= 0)
+                {
+                    return new Response()
+                    {
+                        Code = 1,
+                        Message = "Size koi must be more than 0 and not null",
+                        Data = null
+                    };
+                }
+                return new Response()
+                {
+                    Code = 1,
+                    Message = "Please fill in all information",
+                    Data = null
+                };
             }
+            
+            // Gọi phương thức để lưu file và nhận đường dẫn
+            avatarUrl = await _fileService.SaveKoiAvatar(updateKoi.Avatar);
             if (getKoi != null)
             {
                 getKoi.Name = updateKoi.Name;
