@@ -8,7 +8,11 @@ namespace KoiShowManagementSystem.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public List<Event> Events { get; set; } = new List<Event>();
+        public string CompetitionInfo { get; set; }
+        public List<string> Prizes { get; set; } = new List<string>();
+        public string Rules { get; set; }
+        public string ScoringCriteria { get; set; }
+        public List<string> News { get; set; } = new List<string>();
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -17,24 +21,46 @@ namespace KoiShowManagementSystem.Pages
 
         public void OnGet()
         {
-            Events = GetEvents();
+            CompetitionInfo = "Chào mừng bạn đến với cuộc thi cá Koi! Đây là nơi để các nghệ nhân và người yêu thích cá Koi thể hiện tài năng và sự sáng tạo của mình. Cuộc thi không chỉ là một sự kiện để tranh tài mà còn là cơ hội để giao lưu và học hỏi giữa những người đam mê cá Koi.";
+
+            Prizes = GetPrizes();
+
+            Rules =
+                    "<ul>" +
+                    "<li>Cá Koi tham gia phải đạt tiêu chuẩn về sức khỏe và hình dáng.</li>" +
+                    "<li>Mỗi thí sinh chỉ được đăng ký tối đa 3 con cá.</li>" +
+                    "<li>Các con cá sẽ được phân loại theo kích thước và giống loài.</li>" +
+                    "<li>Ban giám khảo sẽ có quyền loại bỏ những con cá không đạt yêu cầu.</li>" +
+                    "</ul>";
+
+            ScoringCriteria = 
+                              "<ul>" +
+                              "<li><strong>Màu sắc</strong>: Màu sắc phải sắc nét, tươi sáng và đều khắp trên thân cá.</li>" +
+                              "<li><strong>Hình dáng</strong>: Cá phải có hình dáng đối xứng, cân đối, và không có các vết hư tổn.</li>" +
+                              "<li><strong>Da và vảy</strong>: Da của cá phải sáng bóng, sạch sẽ và mịn màng.</li>" +
+                              "<li><strong>Tư thế bơi</strong>: Cá koi cần có chuyển động uyển chuyển, mượt mà, và tư thế bơi tự nhiên.</li>" +
+                              "</ul>";
+
+            News = GetNews();
         }
 
-        private List<Event> GetEvents()
+        private List<string> GetPrizes()
         {
-            return new List<Event>
+            return new List<string>
             {
-                new Event { Id = 1, Name = "S? ki?n 1", Date = "01/01/2024", Description = "M� t? s? ki?n 1" },
-                new Event { Id = 2, Name = "S? ki?n 2", Date = "02/01/2024", Description = "M� t? s? ki?n 2" }
+                "Giải nhất: 10 triệu đồng",
+                "Giải nhì: 5 triệu đồng",
+                "Giải ba: 2 triệu đồng"
             };
         }
-    }
 
-    public class Event
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Date { get; set; }
-        public string Description { get; set; }
+        private List<string> GetNews()
+        {
+            return new List<string>
+            {
+                "Tin tức 1: Cuộc thi sẽ diễn ra vào tháng 1.",
+                "Tin tức 2: Đăng ký tham gia ngay hôm nay!"
+            };
+        }
     }
 }

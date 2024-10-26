@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "KoiShowManagementSystem/1.0.0": {
         "dependencies": {
+          "Repository": "1.0.0",
           "Service": "1.0.0"
         },
         "runtime": {

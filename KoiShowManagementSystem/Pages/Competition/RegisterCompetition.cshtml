@@ -1,0 +1,15 @@
+﻿@page
+@model RegisterCompetitionModel
+
+<h2>Register Competition</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <!-- Chỉ giữ lại trường chọn hình ảnh -->
+    <div>
+        <label>Select Image</label>
+        <input type="file" asp-for="UploadedImage" accept="image/*" />
+    </div>
+
+    <!-- Nút submit -->
+    <button type="submit">Submit</button>
+</form>

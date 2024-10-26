@@ -1,11 +1,8 @@
-﻿using Repository.Entites;
+﻿using Repository.Dtos;
+using Repository.Dtos.Competition;
+using Repository.Entites;
 using Repository.IRepositories;
 using Service.IService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Service
 {
@@ -18,9 +15,28 @@ namespace Service.Service
             _competitionRepository = competitionRepository;
         }
 
-        public async Task<IEnumerable<Competition>> GetCompetitions(string status)
+
+        public async Task<ResponseDto> RegisterCompetitionAsync(RegisterCompetitionDTO competitionDTO)
         {
-            return await _competitionRepository.GetCompetitionsByStatus(status);
+            try
+            {
+                var competition = new Competition
+                {
+                    Name = competitionDTO.Name,
+                    Location = competitionDTO.Location,
+                    StartDate = competitionDTO.StartDate,
+                    EndDate = competitionDTO.EndDate,
+                    Description = competitionDTO.Description,
+                    Status = "Pending" // You might want to set an initial status
+                };
+
+                //await _competitionRepository.AddCompetitionAsync(competition);
+                return new ResponseDto { Code = 0, Message = "Competition registered successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDto { Code = 1, Message = $"Error registering competition: {ex.Message}" };
+            }
         }
     }
 }

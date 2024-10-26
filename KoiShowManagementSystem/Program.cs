@@ -5,15 +5,25 @@ using Repository.Repositories;
 using Service.IService;
 using Service.Service;
 
+using KoiShowManagementSystem.Repository;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<ICompetitionService, CompetitionService>();
+//builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
 
-builder.Services.AddDistributedMemoryCache(); // Dùng ?? l?u tr? Session trong b? nh?
+
+
+
+builder.Services.AddDistributedMemoryCache(); // Dï¿½ng ?? l?u tr? Session trong b? nh?
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); // Th?i gian h?t h?n c?a Session
-    options.Cookie.HttpOnly = true; // Ch? có th? truy c?p Session qua HTTP, không qua JavaScript
-    options.Cookie.IsEssential = true; // Cho phép Session ngay c? khi ng??i dùng không ch?p nh?n cookie
+    options.Cookie.HttpOnly = true; // Ch? cï¿½ th? truy c?p Session qua HTTP, khï¿½ng qua JavaScript
+    options.Cookie.IsEssential = true; // Cho phï¿½p Session ngay c? khi ng??i dï¿½ng khï¿½ng ch?p nh?n cookie
 });
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -36,7 +46,7 @@ builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
 // DI Service
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IKoiService, KoiService>();
-builder.Services.AddScoped<ICompetitionService, CompetitionService>();
+builder.Services.AddScoped<CompetitionService, CompetitionService>();
 
 var app = builder.Build();
 
@@ -59,7 +69,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Kích ho?t Session
+// Kï¿½ch ho?t Session
 app.UseSession();
 
 app.UseEndpoints(endpoints =>

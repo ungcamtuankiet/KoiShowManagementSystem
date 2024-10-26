@@ -1,34 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Repository.Data;
-using Repository.Entites;
+﻿using Repository.Entites;
 using Repository.IRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repositories
+namespace KoiShowManagementSystem.Repository
 {
     public class CompetitionRepository : ICompetitionRepository
     {
-        private readonly KoiShowManagementSystemContext _context;
+        // Implement your database context here
 
-        public CompetitionRepository(KoiShowManagementSystemContext context)
+        public async Task AddCompetitionAsync(Competition competition)
         {
-            _context = context;
+            // Implement the logic to add a competition to the database
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Competition>> GetCompetitionsByStatus(string status)
+        public Task<Competition?> GetCompetitionById(int id)
         {
-            return await _context.Competitions
-                .Where(c => c.Status == status)
-                .ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<Competition?> GetCompetitionById(int id)
+        public Task<IEnumerable<Competition>> GetCompetitionsByStatus(string status)
         {
-            return await _context.Competitions.FindAsync(id);
+            throw new NotImplementedException();
         }
     }
 }

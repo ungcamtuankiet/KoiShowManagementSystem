@@ -13,7 +13,7 @@ namespace KoiShowManagementSystem.Pages.Koi
             _koiService = koiService;
         }
 
-        public Repository.Entites.KoiFish KoiFish { get; set; } = default!;
+        //public Repository.Entites.KoiFish KoiFish { get; set; } = default!;
 
 /*        public async Task<IActionResult> OnPostAsync()
         {

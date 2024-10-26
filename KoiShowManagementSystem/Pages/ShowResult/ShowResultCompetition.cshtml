@@ -1,0 +1,84 @@
+﻿@page
+@model ShowResultCompetitionModel
+@{
+    ViewData["Title"] = "Show Result Competition";
+}
+
+<h2>Show Result Competition</h2>
+
+<h3>Bảng Thống Kê Cuộc Thi</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Koi id</th>
+            <th>CompetitionId</th>
+            <th>CategoryId</th>
+            <th>Rank</th>
+            <th>TotalScore</th>
+            <th>Status</th>
+            <th>Update Date</th>
+            <th>Create Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var result in Model.Result)
+        {
+            <tr>
+                <td>@result.KoiId</td>
+                <td>@result.CompetitionId</td>
+                <td>@result.CategoryId</td>
+                <td>@result.Rank</td>
+                <td>@result.TotalScore</td>
+                <td>@result.Status</td>
+                <td>@result.UpdatedAt</td>
+                <td>@result.CreatedAt</td>
+            </tr>
+        }
+    </tbody> 
+</table>
+
+@* <h3>Bảng Dự Đoán Kết Quả</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Participant Name</th>
+            <th>Predicted Winner</th>
+            <th>Prediction Accuracy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prediction in Model.PredictionResults)
+        {
+            <tr>
+                <td>@prediction.ParticipantName</td>
+                <td>@prediction.PredictedWinner</td>
+                <td>@prediction.PredictionAccuracy %</td>
+            </tr>
+        }
+    </tbody> 
+</table> *@
+
+@* <h3>Thành Tích Cá Koi</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Koi Name</th>
+            <th>Owner Name</th>
+            <th>Category</th>
+            <th>Award</th>
+            <th>Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var koi in Model.KoiAchievements)
+        {
+            <tr>
+                <td>@koi.KoiName</td>
+                <td>@koi.OwnerName</td>
+                <td>@koi.Category</td>
+                <td>@koi.Award</td>
+                <td>@koi.Rank</td>
+            </tr>
+        }
+    </tbody>
+</table> *@

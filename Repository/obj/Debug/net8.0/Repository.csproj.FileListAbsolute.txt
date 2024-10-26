@@ -42,3 +42,18 @@ C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Re
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.pdb
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll
+D:\Start Github\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.deps.json
+D:\Start Github\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+D:\Start Github\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.dll
+D:\Start Github\KoiShowManagementSystem\Repository\bin\Debug\net8.0\Repository.pdb
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.dll
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\refint\Repository.dll
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.pdb
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+D:\Start Github\KoiShowManagementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll

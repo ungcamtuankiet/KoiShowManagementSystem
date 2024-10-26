@@ -30,3 +30,19 @@ C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Se
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Service\obj\Debug\net8.0\refint\Service.dll
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.pdb
 C:\Users\namta\OneDrive\Desktop\Thư mục mới (5)\KoiShowManagementSystem\Service\obj\Debug\net8.0\ref\Service.dll
+D:\Start Github\KoiShowManagementSystem\Service\bin\Debug\net8.0\Service.deps.json
+D:\Start Github\KoiShowManagementSystem\Service\bin\Debug\net8.0\Service.dll
+D:\Start Github\KoiShowManagementSystem\Service\bin\Debug\net8.0\Service.pdb
+D:\Start Github\KoiShowManagementSystem\Service\bin\Debug\net8.0\Repository.dll
+D:\Start Github\KoiShowManagementSystem\Service\bin\Debug\net8.0\Repository.pdb
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.csproj.AssemblyReference.cache
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.AssemblyInfoInputs.cache
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.AssemblyInfo.cs
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.csproj.CoreCompileInputs.cache
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.sourcelink.json
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.csproj.Up2Date
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.dll
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\refint\Service.dll
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\Service.pdb
+D:\Start Github\KoiShowManagementSystem\Service\obj\Debug\net8.0\ref\Service.dll
