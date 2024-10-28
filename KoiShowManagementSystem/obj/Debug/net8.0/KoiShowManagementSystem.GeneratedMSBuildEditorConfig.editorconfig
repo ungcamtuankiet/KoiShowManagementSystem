@@ -74,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXERlbGV0ZUtvaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Koi/MyKoiList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS29pXE15S29pTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,6 +104,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/Competition/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/Competition/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/Competition/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/Competition/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/Competition/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/StaffPage.cshtml]

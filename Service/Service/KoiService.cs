@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Repository.Dtos.Koi;
 using Repository.Dtos.Response;
 using Repository.Dtos.User;
-using Repository.Entites;
+using Repository.Entities;
 using Repository.Enum;
 using Repository.IRepositories;
 using Service.IService;
@@ -145,7 +145,10 @@ namespace Service.Service
                     Data = null
                 };
             }
-            
+            if(updateKoi.Avatar == null)
+            {
+                
+            }
             // Gọi phương thức để lưu file và nhận đường dẫn
             avatarUrl = await _fileService.SaveKoiAvatar(updateKoi.Avatar);
             if (getKoi != null)

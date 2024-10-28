@@ -1,20 +1,20 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Repository;
+using Repository.Data;
 using Repository.Entites;
 
 namespace KoiShowManagementSystem.Pages.Competition
 {
     public class ViewCompetitionModel : PageModel
     {
-        private readonly Repository.KoiShowManagementSystemContext _context;
+        private readonly KoiShowManagementSystemContext _context;
 
-        public ViewCompetitionModel(Repository.KoiShowManagementSystemContext context)
+        public ViewCompetitionModel(KoiShowManagementSystemContext context)
         {
             _context = context;
         }
@@ -28,3 +28,4 @@ namespace KoiShowManagementSystem.Pages.Competition
         }
     }
 }
+*/

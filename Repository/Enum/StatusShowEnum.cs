@@ -11,6 +11,7 @@ namespace Repository.Enum
         UnProgress,
         InProgess,
         End,
-        Cancel
+        Cancel,
+        Starting
     }
 }

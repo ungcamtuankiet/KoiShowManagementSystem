@@ -15,57 +15,66 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom box-shadow mb-3">
             <div class="container">
-                <!-- Center KoiShowManagementSystem -->
-                <a class="navbar-brand mx-auto" asp-area="" asp-page="/Index">KoiShowManagementSystem</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">KoiShowManagementSystem</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Navbar Links -->
-                <div class="navbar-collapse collapse">
-                    <ul class="menu">
-                        <li><a href="#">4th Virtual Koi Show</a></li>
-                        <li>
-                            <a href="#">Previous Shows</a>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="#">Virtual Koi Shows</a>
-                                    <ul class="submenu">
-                                        <li><a href="#">1st Virtual Koi Show</a></li>
-                                        <li><a href="#">2nd Virtual Koi Show</a></li>
-                                        <li><a href="#">3rd Virtual Koi Show</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Virtual Young Koi Shows</a></li>
-                                <li><a href="#">Sekiguchi Grow Out Contests</a></li>
-                                <li><a href="#">Taniguchi Grow Out Contests</a></li>
-                                <li><a href="#">Izumiya Growout 2022</a></li>
-                                <li><a href="#">Izumiya/Marusaka Growout 2023</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <!-- Conditional Login/Register or Logout buttons aligned to the right -->
-                        @if (!string.IsNullOrEmpty(Context.Session.GetString("UserRole")))
+                        @{
+                            var userRole = Context.Session.GetString("UserRole");
+                            var userName = Context.Session.GetString("UserName");
+                        }
+                        @if (!string.IsNullOrEmpty(userRole))
                         {
-                            <li class="nav-item">
-                                <form method="post" asp-page-handler="Logout">
-                                    <button type="submit" class="btn btn-danger">Logout</button>
-                                </form>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Xin chào, @userName (@userRole Options)
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (userRole == "Member")
+                                    {
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Koi/MyKoiList">View My Koi</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Index">Edit Profile</a></li>
+                                        <li>
+                                            <form method="post" asp-page-handler="Logout">
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    }
+                                    else if (userRole == "Admin")
+                                    {
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Admin/ManageAccount">Manage Account</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Admin/Category/Index">Manage Category</a></li>
+                                        <li>
+                                            <form method="post" asp-page-handler="Logout">
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    }
+                                    else if (userRole == "Staff")
+                                    {
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Staff/Competition/Index">Manage Show</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Staff/Schedule">Manage Koi Of User</a></li>
+                                        <li>
+                                            <form method="post" asp-page-handler="Logout">
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    }
+                                </ul>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Authen/Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-page="/Authen/Login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Authen/Register">Register</a>
+                                <a class="nav-link" asp-area="" asp-page="/Authen/Register">Register</a>
                             </li>
                         }
                     </ul>
@@ -73,6 +82,7 @@
             </div>
         </nav>
     </header>
+
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success">
@@ -99,6 +109,8 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
@@ -162,4 +174,44 @@
     .menu li:hover .submenu {
         display: block;
     }
+
+    header {
+        background-color: #f8f9fa; /* Light background for the navbar */
+    }
+
+    .navbar {
+        padding: 10px 20px; /* Add some padding */
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem; /* Increase font size for brand */
+        font-weight: bold; /* Make the brand bold */
+        color: #bf0c2d; /* Set brand color */
+    }
+
+    .navbar-nav .nav-link {
+        color: #333; /* Dark color for links */
+        padding: 10px 15px; /* Add padding to links */
+        transition: background-color 0.3s; /* Smooth background color transition */
+    }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #bf0c2d; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+            border-radius: 5px; /* Rounded corners for hover effect */
+        }
+
+    .dropdown-menu {
+        min-width: 200px; /* Set a minimum width for dropdown */
+    }
+
+    .dropdown-item {
+        transition: background-color 0.3s; /* Smooth background color transition for dropdown items */
+    }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa; /* Change background color on hover */
+            color: #bf0c2d; /* Change text color on hover */
+        }
+
 </style>

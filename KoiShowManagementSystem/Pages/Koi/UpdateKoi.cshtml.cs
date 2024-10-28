@@ -32,7 +32,6 @@ namespace KoiShowManagementSystem.Pages.Koi
         public IActionResult GetKoiAvatarImage(string fileName)
         {
             var avatarBytes = _fileService.GetKoiAvatar(fileName).Result;
-
             if (avatarBytes == null)
             {
                 return NotFound(); 
@@ -68,7 +67,7 @@ namespace KoiShowManagementSystem.Pages.Koi
                 Name = koi.Name,
                 Variety = koi.Variety,
                 Size = koi.Size,
-                Description = koi.Description
+                Description = koi.Description,
             };
 
             return Page();
@@ -76,7 +75,6 @@ namespace KoiShowManagementSystem.Pages.Koi
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var response = await _koiService.UpdateKoi(UpdateKoiDto, id);
-
             if (response.Code == 0)
             {
                 TempData["SuccessMessage"] = response.Message;

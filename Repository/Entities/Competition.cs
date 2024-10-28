@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Repository.Entites;
+namespace Repository.Entities;
 
 public partial class Competition
 {
@@ -24,6 +24,8 @@ public partial class Competition
     public DateTime? CreatedAt { get; set; }
 
     public int? CategoryId { get; set; }
+
+    public int? Amount { get; set; }
 
     public virtual Category? Category { get; set; }
 

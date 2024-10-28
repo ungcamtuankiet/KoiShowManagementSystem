@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.IService;
-using Service.Service;
 
 namespace KoiShowManagementSystem.Pages.Category
 {
@@ -24,7 +23,7 @@ namespace KoiShowManagementSystem.Pages.Category
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == "Member")
+            if (userRole == "Admin")
             {
                 var response = await _categoryService.GetCategoriesAsync();
                 var category = await _categoryService.GetCategoryById(id);

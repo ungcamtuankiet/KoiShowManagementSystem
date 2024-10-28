@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Repository;
-using Repository.Entites;
 using Service.IService;
 
 namespace KoiShowManagementSystem.Pages.Competition
@@ -31,7 +29,7 @@ namespace KoiShowManagementSystem.Pages.Competition
         }
 
         [BindProperty]
-        public Repository.Entites.Competition Competition { get; set; } = default!;
+        public Repository.Entities.Competition Competition { get; set; } = default!;
         public string? UserRole { get; private set; }
 
         // For more information, see https://aka.ms/RazorPagesCRUD.

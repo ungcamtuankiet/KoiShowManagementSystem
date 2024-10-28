@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repository.Entites;
+using Repository.Entities;
 using Repository.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,10 @@ namespace Repository.Repositories
         {
             _context = context;
         }
+        public async Task<IList<Competition>> GetAll()
+        {
+            return await _context.Competitions.Include(c => c.Category).ToListAsync();
+        }
 
         public async Task<IEnumerable<Competition>> GetCompetitionsByStatus(string status)
         {
@@ -33,6 +37,18 @@ namespace Repository.Repositories
         public async Task CreateCompetition(Competition competition)
         {
             await _context.Competitions.AddAsync(competition);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateCompetition(Competition competition)
+        {
+            _context.Competitions.Update(competition);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteCompetition(Competition competition)
+        {
+            _context.Competitions.Remove(competition);
             await _context.SaveChangesAsync();
         }
     }

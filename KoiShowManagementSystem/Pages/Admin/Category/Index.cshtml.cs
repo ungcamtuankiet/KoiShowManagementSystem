@@ -11,7 +11,7 @@ namespace KoiShowManagementSystem.Pages.Category
         private readonly ICategoryService _categoryService;
         private readonly IAuthService _authService;
 
-        public IEnumerable<Repository.Entites.Category> Categories { get; set; }
+        public IEnumerable<Repository.Entities.Category> Categories { get; set; }
         public string? UserRole { get; private set; }
 
         public IndexModel(ICategoryService categoryService, IAuthService authService)

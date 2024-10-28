@@ -1,4 +1,4 @@
-﻿@page
+﻿@* @page
 @model KoiShowManagementSystem.Pages.Authen.RegisterModel
 <h2 class="register-page">Register</h2>
 
@@ -37,3 +37,67 @@
         text-align: center;
     }
 </style>
+ *@
+@page
+@model KoiShowManagementSystem.Pages.Authen.RegisterModel
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Register</h2>
+
+    <form method="post" class="shadow p-4 rounded bg-light mx-auto" style="max-width: 500px;">
+        <div class="form-group mb-3">
+            <label asp-for="Input.FullName" class="form-label fw-bold">Full Name</label>
+            <input asp-for="Input.FullName" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Input.Email" class="form-label fw-bold">Email</label>
+            <input asp-for="Input.Email" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Input.PhoneNumber" class="form-label fw-bold">Phone Number</label>
+            <input asp-for="Input.PhoneNumber" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Input.Address" class="form-label fw-bold">Address</label>
+            <input asp-for="Input.Address" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+            <label asp-for="Input.Password" class="form-label fw-bold">Password</label>
+            <input asp-for="Input.Password" id="passwordInput" type="password" class="form-control" />
+            <button type="button" class="btn btn-outline-secondary position-absolute" style="right: 10px; top: 38%; z-index: 10;" id="togglePassword">Show</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+
+        <div class="text-center mt-3">
+            <span>Already have an account? </span>
+            <a href="/Authen/Login" class="text-decoration-none">Login here</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#togglePassword').on('click', function() {
+            const passwordInput = $('#passwordInput');
+            const toggleButton = $(this);
+            const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+            passwordInput.attr('type', type);
+            toggleButton.text(type === 'password' ? 'Show' : 'Hide');
+        });
+    });
+</script>
+

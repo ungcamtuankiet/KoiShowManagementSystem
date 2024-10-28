@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Repository.Entites;
 using Service.IService;
 using Service.Service;
 
@@ -18,7 +17,7 @@ namespace KoiShowManagementSystem.Pages.Koi
             _authService = authService;
         }
 
-        public Repository.Entites.KoiFish KoiFish { get; set; } = default!;
+        public Repository.Entities.KoiFish KoiFish { get; set; } = default!;
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var userId = HttpContext.Session.GetInt32("UserId");

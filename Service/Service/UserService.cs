@@ -1,6 +1,6 @@
 ﻿using Repository.Dtos.Response;
 using Repository.Dtos.User;
-using Repository.Entites;
+using Repository.Entities;
 using Repository.Enum;
 using Repository.IRepositories;
 using Service.IService;

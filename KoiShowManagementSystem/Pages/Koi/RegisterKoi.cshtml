@@ -1,7 +1,7 @@
-﻿@page
+﻿@* @page
 @model RegisterKoiModel
 @{
-    ViewData["Title"] = "RegisterKoi";
+    Layout = "_Layout";
 }
 
 <h2>Register Koi</h2>
@@ -37,3 +37,59 @@
     <button type="submit" class="btn btn-primary">Register Koi</button>
     <a href="/Koi/MyKoiList" style="text-decoration:none">Cancel</a>
 </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ *@
+
+ @page
+@model RegisterKoiModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Register Your Koi</h2>
+
+    <form method="post" enctype="multipart/form-data" class="shadow p-4 rounded bg-light">
+        <div class="form-group mb-3">
+            <label asp-for="KoiDto.Name" class="form-label fw-bold">Koi Name</label>
+            <input asp-for="KoiDto.Name" class="form-control" />
+            <span asp-validation-for="KoiDto.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="KoiDto.Variety" class="form-label fw-bold">Koi Variety</label>
+            <select asp-for="KoiDto.Variety" class="form-select" asp-items="Model.koiVarieties">
+                <option value="">-- Select Koi Variety --</option>
+            </select>
+            <span asp-validation-for="KoiDto.Variety" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label fw-bold">Avatar</label>
+            <input type="file" name="KoiDto.Avatar" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="KoiDto.Size" class="form-label fw-bold">Size (cm)</label>
+            <input asp-for="KoiDto.Size" type="number" class="form-control" />
+            <span asp-validation-for="KoiDto.Size" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="KoiDto.Description" class="form-label fw-bold">Description</label>
+            <textarea asp-for="KoiDto.Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="KoiDto.Description" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="KoiDto.UserId" />
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Register Koi</button>
+            <a href="/Koi/MyKoiList" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

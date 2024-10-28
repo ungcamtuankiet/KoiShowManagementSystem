@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repository.Entites;
+using Repository.Entities;
 using Repository.IRepositories;
 using System;
 using System.Collections.Generic;

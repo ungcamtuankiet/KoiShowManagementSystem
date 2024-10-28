@@ -1,4 +1,4 @@
-﻿@page
+﻿@* @page
 @model KoiShowManagementSystem.Pages.Authen.LoginModel
 @{
 }
@@ -26,4 +26,44 @@
         margin:auto;
         text-align:center;
     }
+</style> *@
+
+@page
+@model KoiShowManagementSystem.Pages.Authen.LoginModel
+@{
+}
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Login Page</h2>
+
+    <form method="post" class="shadow p-4 rounded bg-light mx-auto" style="max-width: 400px;">
+        <div class="form-group mb-3">
+            <label asp-for="Input.Email" class="form-label fw-bold">Email</label>
+            <input asp-for="Input.Email" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Input.Password" class="form-label fw-bold">Password</label>
+            <input asp-for="Input.Password" type="password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        <div class="text-center mt-3">
+            <span>Don't have an account? </span>
+            <a href="/Authen/Register" class="text-decoration-none">Register here</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
+

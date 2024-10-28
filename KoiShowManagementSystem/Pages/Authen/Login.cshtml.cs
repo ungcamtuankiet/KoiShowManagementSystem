@@ -30,23 +30,9 @@ namespace KoiShowManagementSystem.Pages.Authen
             // Store user session data
             HttpContext.Session.SetInt32("UserId", getUser.Id);
             HttpContext.Session.SetString("UserRole", getUser.Role.ToString());
+            HttpContext.Session.SetString("UserName" , getUser.FullName);
             TempData["SuccessMessage"] = user.Message;
-            if(getUser.Role == "Member")
-            {
-                return RedirectToPage("/User/UserPage");
-            }
-            else if(getUser.Role == "Staff")
-            {
-                return RedirectToPage("/Staff/StaffPage");
-            }
-            else if(getUser.Role == "Referee")
-            {
-                return RedirectToPage("/Referee/RefereePage");
-            }
-            else
-            {
-                return RedirectToPage("/Admin/AdminPage");
-            }
+            return RedirectToPage("/Index");
         }
     }
 }

@@ -1,9 +1,81 @@
 ﻿@page
 @model IndexModel
-@if (string.IsNullOrEmpty(Model.UserRole))
-{
-    <p>Bạn chưa đăng nhập. Vui lòng đăng nhập</p>
+@{
+    ViewData["Title"] = "Trang Chủ - Koi Show Management";
 }
-else{
-    <p>Bạn đã đăng nhập</p>
-}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom box-shadow mb-3">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav flex-grow-1">
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h1 class="text-center">Chào Mừng Đến Với Cuộc Thi Cá Koi</h1>
+            <p class="lead text-center">@Model.CompetitionInfo</p>
+
+            <h2 class="section-title">Giải thưởng</h2>
+            <ul class="list-group mb-4">
+                @foreach (var prize in Model.Prizes)
+                {
+                    <li class="list-group-item">@prize</li>
+                }
+            </ul>
+
+            <h2 class="section-title">Luật thi đấu</h2>
+            <div>@Html.Raw(Model.Rules)</div>
+
+            <h2 class="section-title">Tiêu chí chấm điểm</h2>
+            <div>@Html.Raw(Model.ScoringCriteria)</div>
+
+            <h2 class="section-title">Tin tức</h2>
+            <ul class="list-group">
+                @foreach (var news in Model.News)
+                {
+                    <li class="list-group-item">@news</li>
+                }
+            </ul>
+        </main>
+    </div>
+    <div class="koi-list row">
+        <h1 class="text-center">Danh sách tất cả cá Koi</h1>
+        @if (Model.KoiFishList != null && Model.KoiFishList.Any())
+        {
+            @foreach (var koi in Model.KoiFishList)
+            {
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 p-3">
+                        <img src="@koi.AvatarUrl" class="card-img-top mb-3" alt="Koi Avatar" style="object-fit: cover; height: 200px;" />
+                        <div class="card-body p-0">
+                            <h5 class="card-title">@koi.Name</h5>
+                            <p class="card-text"><strong>Size:</strong> @koi.Size</p>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <a asp-page="/Koi/Detail" asp-route-id="@koi.Id" class="btn btn-primary btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <footer class="border-top footer text-muted">
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

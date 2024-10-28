@@ -1,6 +1,6 @@
 ﻿using Repository.Dtos.Koi;
 using Repository.Dtos.Response;
-using Repository.Entites;
+using Repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

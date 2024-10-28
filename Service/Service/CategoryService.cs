@@ -1,6 +1,6 @@
 ﻿using Repository.Dtos.Category;
 using Repository.Dtos.Response;
-using Repository.Entites;
+using Repository.Entities;
 using Repository.Enum;
 using Repository.IRepositories;
 using Repository.Repositories;

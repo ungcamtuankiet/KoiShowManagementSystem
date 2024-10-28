@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Repository.Entities;
 
-namespace Repository.Entites;
+namespace Repository.Entities;
 
 public partial class JudgeScore
 {

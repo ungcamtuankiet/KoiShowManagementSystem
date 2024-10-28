@@ -35,6 +35,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IKoiRepository, KoiRepository>();
 builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IKoiRegistationRepository, KoiRegistationRepository>();
 
 // DI Service
 builder.Services.AddScoped<IUserService, UserService>();

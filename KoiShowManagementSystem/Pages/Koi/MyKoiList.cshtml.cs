@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repository.Dtos.Koi;
-using Repository.Entites;
+using Repository.Entities;
 using Service.IService;
 using Service.Service;
 
@@ -22,7 +22,6 @@ namespace KoiShowManagementSystem.Pages.Koi
         }
 
         public List<KoiFish> KoiFishList { get; set; }
-        public UpdateKoiDto UpdateKoi { get; set; }
         public string fileName { get; set; }
         public int Koi_Id { get; set; }
 
