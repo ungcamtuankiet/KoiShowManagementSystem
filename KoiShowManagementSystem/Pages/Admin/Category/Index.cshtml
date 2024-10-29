@@ -3,33 +3,56 @@
 @{
     Layout = "_Layout";
 }
-<h2>Category List</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var category in Model.Categories)
-        {
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Category List</h2>
+        <a class="btn btn-primary" asp-page="/Admin/Category/Create">
+            <i class="bi bi-plus-circle"></i> Create New Category
+        </a>
+    </div>
+
+    <table class="table table-bordered table-striped table-hover shadow-sm">
+        <thead class="table-primary">
             <tr>
-                <td>@category.Name</td>
-                <td>@category.Status</td>
-                <td>
-                    <a asp-page="/Admin/Category/Edit" asp-route-id="@category.Id">Edit</a> |
-                    <a asp-page="/Admin/Category/Delete" asp-route-id="@category.Id">Delete</a>
-                </td>
+                <th>Name</th>
+                <th>Status</th>
+                <th class="text-center">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (Model.Categories != null && Model.Categories.Any())
+            {
+                @foreach (var category in Model.Categories)
+                {
+                    <tr>
+                        <td>@category.Name</td>
+                        <td>
+                            <span class="badge @(category.Status == "Active" ? "bg-success" : "bg-secondary")">
+                                @category.Status
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a asp-page="/Admin/Category/Edit" asp-route-id="@category.Id" class="btn btn-sm btn-outline-info me-1">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-page="/Admin/Category/Delete" asp-route-id="@category.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No categories available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-<a class="btn btn-primary" asp-page="/Admin/Category/Create">Create New Category</a>
+<!-- Include jQuery and Bootstrap's JavaScript bundle -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-

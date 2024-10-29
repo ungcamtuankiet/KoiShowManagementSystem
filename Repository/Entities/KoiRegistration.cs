@@ -12,7 +12,6 @@ public partial class KoiRegistration
 
     public int? CompetitionId { get; set; }
 
-    public int? CategoryId { get; set; }
 
     public DateTime? RegistrationDate { get; set; }
 
@@ -21,8 +20,6 @@ public partial class KoiRegistration
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? CreatedAt { get; set; }
-
-    public virtual Category? Category { get; set; }
 
     public virtual Competition? Competition { get; set; }
 

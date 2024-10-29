@@ -124,17 +124,12 @@ public partial class KoiShowManagementSystemContext : DbContext
 
             entity.ToTable("KoiRegistration");
 
-            entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
             entity.Property(e => e.CompetitionId).HasColumnName("Competition_Id");
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Category).WithMany(p => p.KoiRegistrations)
-                .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__KoiRegist__Categ__300424B4");
 
             entity.HasOne(d => d.Competition).WithMany(p => p.KoiRegistrations)
                 .HasForeignKey(d => d.CompetitionId)
@@ -155,7 +150,7 @@ public partial class KoiShowManagementSystemContext : DbContext
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.Rank).HasMaxLength(50);
-            entity.Property(e => e.Result1)
+            entity.Property(e => e.ResultKoi)
                 .HasMaxLength(50)
                 .HasColumnName("Result");
             entity.Property(e => e.Status).HasMaxLength(50);

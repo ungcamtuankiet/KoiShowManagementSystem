@@ -13,7 +13,7 @@ public partial class Result
 
     public string? Rank { get; set; }
 
-    public string? Result1 { get; set; }
+    public string? ResultKoi { get; set; }
 
     public decimal? TotalScore { get; set; }
 
