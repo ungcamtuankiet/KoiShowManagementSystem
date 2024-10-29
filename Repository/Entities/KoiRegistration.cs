@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Repository.Entities;
 
 namespace Repository.Entities;
 
@@ -12,6 +11,7 @@ public partial class KoiRegistration
 
     public int? CompetitionId { get; set; }
 
+    public int? UserId { get; set; }
 
     public DateTime? RegistrationDate { get; set; }
 
@@ -24,4 +24,6 @@ public partial class KoiRegistration
     public virtual Competition? Competition { get; set; }
 
     public virtual KoiFish? Koi { get; set; }
+
+    public virtual User? User { get; set; }
 }

@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="text-center mt-4">
-        <a asp-page="/Index" class="btn btn-secondary">Return Home Page</a>
+        <a href="javascript:history.back()" onclick="if(!history.length) this.href='/Index';" class="btn btn-secondary">Return</a>
     </div>
 </div>
 

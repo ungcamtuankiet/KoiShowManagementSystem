@@ -126,6 +126,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcQ29tcGV0aXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/ManageKoiRegistration/AcceptKoiRegistration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcTWFuYWdlS29pUmVnaXN0cmF0aW9uXEFjY2VwdEtvaVJlZ2lzdHJhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/ManageKoiRegistration/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcTWFuYWdlS29pUmVnaXN0cmF0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/ManageKoiRegistration/RejectKoiRegistration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcTWFuYWdlS29pUmVnaXN0cmF0aW9uXFJlamVjdEtvaVJlZ2lzdHJhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Learning/PRN221/Project/KoiShowManagementSystem/KoiShowManagementSystem/Pages/Staff/StaffPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhZmZcU3RhZmZQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,15 +1,10 @@
-﻿using Repository.Dtos.Category;
+﻿using Repository;
+using Repository.Dtos.Category;
 using Repository.Dtos.Response;
 using Repository.Entities;
 using Repository.Enum;
 using Repository.IRepositories;
-using Repository.Repositories;
 using Service.IService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Service
 {

@@ -28,4 +28,6 @@ public partial class User
     public virtual ICollection<JudgeScore> JudgeScores { get; set; } = new List<JudgeScore>();
 
     public virtual ICollection<KoiFish> KoiFishes { get; set; } = new List<KoiFish>();
+
+    public virtual ICollection<KoiRegistration> KoiRegistrations { get; set; } = new List<KoiRegistration>();
 }

@@ -141,5 +141,72 @@ namespace Service.Service
 
             await SendEmailAsync(emailDto);
         }
+
+        public async Task SendAcceptKoiRegistration(string email)
+        {
+            var emailDto = new EmailDTO
+            {
+                To = email,
+                Subject = "Koi Registration Competition was accepted",
+                Body = $@"
+                    <html>
+                    <body style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                        <div style='max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
+                            <h2 style='color: #333;'>Koi Registration Competition was accepted</h2>
+                            <p style='color: #555;'>Your koi has been accepted into the competition.</p>
+                            <p style='color: #555;'>Please read the contest rules and contest schedule to prepare for the upcoming contest.</p>
+                            <p style='color: #555;'>Best regards,<br />Koi Show System Management</p>
+                        </div>
+                    </body>
+                    </html>"
+            };
+
+            await SendEmailAsync(emailDto);
+        }
+
+        public async Task SendRejectKoiRegistration(string email, string reason)
+        {
+            var emailDto = new EmailDTO
+            {
+                To = email,
+                Subject = "Koi Registration Competition was rejected",
+                Body = $@"
+                    <html>
+                    <body style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                        <div style='max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
+                            <h2 style='color: #333;'>Koi Registration Competition was rejected</h2>
+                            <p style='color: #555;'>Your koi registration to competition was reject</p>
+                            <p style='color: #555;'>Reason: {reason}</p>
+                            <p style='color: #555;'>If you have any questions or need further assistance, please contact our support team.</p>
+                            <p style='color: #555;'>Best regards,<br />Koi Show System Management</p>
+                        </div>
+                    </body>
+                    </html>"
+            };
+
+            await SendEmailAsync(emailDto);
+        }
+
+        public async Task SendRejectKoiRegistrationAuto(string email)
+        {
+            var emailDto = new EmailDTO
+            {
+                To = email,
+                Subject = "Koi Registration Competition was rejected",
+                Body = $@"
+                    <html>
+                    <body style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                        <div style='max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
+                            <h2 style='color: #333;'>Koi Registration Competition was rejected</h2>
+                            <p style='color: #555;'>We apologize that the contest is full. See you again in the next contest.</p>
+                            <p style='color: #555;'>If you have any questions or need further assistance, please contact our support team.</p>
+                            <p style='color: #555;'>Best regards,<br />Koi Show System Management</p>
+                        </div>
+                    </body>
+                    </html>"
+            };
+
+            await SendEmailAsync(emailDto);
+        }
     }
 }

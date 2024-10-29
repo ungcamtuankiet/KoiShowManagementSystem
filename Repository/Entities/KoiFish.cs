@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Repository.Entities;
 
 namespace Repository.Entities;
 
@@ -16,6 +15,8 @@ public partial class KoiFish
 
     public int? Size { get; set; }
 
+    public string? AvatarUrl { get; set; }
+
     public string? Description { get; set; }
 
     public DateTime? RegistrationDate { get; set; }
@@ -25,8 +26,6 @@ public partial class KoiFish
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? CreatedAt { get; set; }
-
-    public string? AvatarUrl { get; set; }
 
     public virtual ICollection<JudgeScore> JudgeScores { get; set; } = new List<JudgeScore>();
 

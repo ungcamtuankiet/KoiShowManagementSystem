@@ -120,7 +120,7 @@ public partial class KoiShowManagementSystemContext : DbContext
 
         modelBuilder.Entity<KoiRegistration>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC07AEA29753");
+            entity.HasKey(e => e.Id).HasName("PK__KoiRegis__3214EC07E0594F29");
 
             entity.ToTable("KoiRegistration");
 
@@ -130,19 +130,24 @@ public partial class KoiShowManagementSystemContext : DbContext
             entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasColumnName("User_Id");
 
             entity.HasOne(d => d.Competition).WithMany(p => p.KoiRegistrations)
                 .HasForeignKey(d => d.CompetitionId)
-                .HasConstraintName("FK__KoiRegist__Compe__2F10007B");
+                .HasConstraintName("FK__KoiRegist__Compe__5441852A");
 
             entity.HasOne(d => d.Koi).WithMany(p => p.KoiRegistrations)
                 .HasForeignKey(d => d.KoiId)
-                .HasConstraintName("FK__KoiRegist__Koi_I__2E1BDC42");
+                .HasConstraintName("FK__KoiRegist__Koi_I__534D60F1");
+
+            entity.HasOne(d => d.User).WithMany(p => p.KoiRegistrations)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__KoiRegist__User___5535A963");
         });
 
         modelBuilder.Entity<Result>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC078E0F7F1E");
+            entity.HasKey(e => e.Id).HasName("PK__Result__3214EC0742EB1A33");
 
             entity.ToTable("Result");
 
@@ -150,20 +155,18 @@ public partial class KoiShowManagementSystemContext : DbContext
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.KoiId).HasColumnName("Koi_Id");
             entity.Property(e => e.Rank).HasMaxLength(50);
-            entity.Property(e => e.ResultKoi)
-                .HasMaxLength(50)
-                .HasColumnName("Result");
+            entity.Property(e => e.ResultKoi).HasMaxLength(50);
             entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.TotalScore).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Competition).WithMany(p => p.Results)
                 .HasForeignKey(d => d.CompetitionId)
-                .HasConstraintName("FK__Result__Competit__4CA06362");
+                .HasConstraintName("FK__Result__Competit__59063A47");
 
             entity.HasOne(d => d.Koi).WithMany(p => p.Results)
                 .HasForeignKey(d => d.KoiId)
-                .HasConstraintName("FK__Result__Koi_Id__4BAC3F29");
+                .HasConstraintName("FK__Result__Koi_Id__5812160E");
         });
 
         modelBuilder.Entity<User>(entity =>

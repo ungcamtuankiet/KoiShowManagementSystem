@@ -1,14 +1,17 @@
 ﻿using Repository.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Repository.IRepositories
 {
     public interface IKoiRegistationRepository
     {
-        Task<IList<KoiRegistration>> GetKoiRegistationByCompetitionId(int competitionId);  
+        Task<IList<KoiRegistration>> ViewKoiRegistration();
+        Task<IList<KoiRegistration>> GetKoiRegistationByCompetitionId(int competitionId);
+        Task<IList<KoiRegistration>> GetListKoiPending(int competitionId);
+        Task<KoiRegistration> GetKoiRegistrationById(int id);
+        Task RegisterKoiRegistration(KoiRegistration registration);
+        Task UpdateKoiRegistration(KoiRegistration registration);
     }
 }
+
+
+
+

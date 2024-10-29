@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QsrvJabLS1we16x/LijeuagflkyV860JGf31FoWJjYc=",
+  "Hash": "ro4nxd5ZA1MkkMLkcT0rSl4k921uDGdk/21k4MuCvUg=",
   "Source": "KoiShowManagementSystem",
   "BasePath": "_content/KoiShowManagementSystem",
   "Mode": "Default",
@@ -167,25 +167,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\koi\\9d3c21b9-4db5-4a07-8ead-f49bbdf369f9_a.png"
-    },
-    {
-      "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\images\\koi\\e273c31c-1293-45f0-aa1d-d6eec817d099_Screenshot 2024-08-07 082726.png",
-      "SourceId": "KoiShowManagementSystem",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\",
-      "BasePath": "_content/KoiShowManagementSystem",
-      "RelativePath": "images/koi/e273c31c-1293-45f0-aa1d-d6eec817d099_Screenshot 2024-08-07 082726.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\koi\\e273c31c-1293-45f0-aa1d-d6eec817d099_Screenshot 2024-08-07 082726.png"
     },
     {
       "Identity": "C:\\Learning\\PRN221\\Project\\KoiShowManagementSystem\\KoiShowManagementSystem\\wwwroot\\js\\site.js",

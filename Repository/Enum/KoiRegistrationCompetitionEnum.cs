@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Repository.Enum
 {
-    public enum StatusShowEnum
+    public enum KoiRegistrationCompetitionEnum
     {
-        UnProgress,
-        FullUser,
-        InProgess,
-        End,
-        Cancel,
-        Starting
+        Pending,
+        Accepted,
+        Rejected
     }
 }

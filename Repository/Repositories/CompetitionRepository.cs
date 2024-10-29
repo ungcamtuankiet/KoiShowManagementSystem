@@ -19,7 +19,7 @@ namespace Repository.Repositories
         }
         public async Task<IList<Competition>> GetAll()
         {
-            return await _context.Competitions.Include(c => c.Category).ToListAsync();
+            return await _context.Competitions.Include(c => c.Category).OrderBy(c => c.CreatedAt).ToListAsync();
         }
 
         public async Task<IEnumerable<Competition>> GetCompetitionsByStatus(string status)

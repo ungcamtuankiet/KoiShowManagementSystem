@@ -17,8 +17,4 @@ public partial class Category
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<Competition> Competitions { get; set; } = new List<Competition>();
-
-    public virtual ICollection<KoiRegistration> KoiRegistrations { get; set; } = new List<KoiRegistration>();
-
-    public virtual ICollection<Result> Results { get; set; } = new List<Result>();
 }
