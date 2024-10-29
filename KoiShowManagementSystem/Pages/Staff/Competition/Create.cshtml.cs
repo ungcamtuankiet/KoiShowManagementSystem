@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Repository;
+using Repository.Entities;
 using Repository.IRepositories;
 using Service.IService;
 using Service.Service;
@@ -44,19 +45,27 @@ namespace KoiShowManagementSystem.Pages.Staff.Competition
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            try
             {
+                if (!ModelState.IsValid)
+                {
+                    return Page();
+                }
+                var result = await _competitionService.CreateCompetition(Competition);
+                if (result.Code == 0)
+                {
+                    TempData["SuccessMessage"] = result.Message;
+                    return RedirectToPage("/Staff/Competition/Index");
+                }
+                ViewData["CategoryId"] = new SelectList(await _categoryService.GetCategoriesAsync(), "Id", "Name");
+                TempData["ErrorMessage"] = result.Message;
                 return Page();
             }
-            var result = await _competitionService.CreateCompetition(Competition);
-            if (result.Code == 0)
+            catch (Exception ex)
             {
-                TempData["SuccessMessage"] = result.Message;
-                return RedirectToPage("/Staff/Competition/Index");
+                TempData["ErrorMessage"] = ex;
+                return Page();
             }
-            ViewData["CategoryId"] = new SelectList(await _categoryService.GetCategoriesAsync(), "Id", "Name");
-            TempData["ErrorMessage"] = result.Message;
-            return Page();
         }
         public async Task<IActionResult> OnPostLogout()
         {

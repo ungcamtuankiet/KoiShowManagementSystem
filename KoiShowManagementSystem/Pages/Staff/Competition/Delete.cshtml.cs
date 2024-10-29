@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Repository.Entities;
 using Service.IService;
 using Service.Service;
 
@@ -55,25 +56,33 @@ namespace KoiShowManagementSystem.Pages.Staff.Competition
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
-
-            var competition = await _competitionService.GetCompetitionById((int)id);
-            if (competition != null)
-            {
-                Competition = competition;
-                var result = await _competitionService.DeleteCompetition(Competition);
-                if (result.Code == 0)
+                if (id == null)
                 {
-                    TempData["SuccessMessage"] = result.Message;
-                    return RedirectToPage("/Staff/Competition/Index");
+                    return NotFound();
                 }
-                TempData["ErrorMessage"] = result.Message;
+
+                var competition = await _competitionService.GetCompetitionById((int)id);
+                if (competition != null)
+                {
+                    Competition = competition;
+                    var result = await _competitionService.DeleteCompetition(Competition);
+                    if (result.Code == 0)
+                    {
+                        TempData["SuccessMessage"] = result.Message;
+                        return RedirectToPage("/Staff/Competition/Index");
+                    }
+                    TempData["ErrorMessage"] = result.Message;
+                    return Page();
+                }
+                return RedirectToPage("./Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Cann't delete this show";
                 return Page();
             }
-            return RedirectToPage("./Index");
         }
         public async Task<IActionResult> OnPostLogout()
         {

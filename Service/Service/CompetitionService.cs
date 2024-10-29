@@ -36,29 +36,36 @@ namespace Service.Service
         }
         public async Task<Response> CreateCompetition(Competition competition)
         {
-            if (competition.Name == null || competition.Amount == null || competition.Description == null || competition.StartDate == null || competition.EndDate == null || competition.Location == null)
+            try
             {
-                return new Response() { Code = 1, Message = "Please fill all information", Data = null };
-            }
-            else
-            {
-                if(competition.EndDate < competition.StartDate)
+                if (competition.Name == null || competition.Amount == null || competition.Description == null || competition.StartDate == null || competition.EndDate == null || competition.Location == null)
                 {
-                    return new Response() { Code = 1, Message = "End date can not before start date", Data = null };
+                    return new Response() { Code = 1, Message = "Please fill all information", Data = null };
+                }
+                else
+                {
+                    if (competition.EndDate < competition.StartDate)
+                    {
+                        return new Response() { Code = 1, Message = "End date can not before start date", Data = null };
 
+                    }
+                    if (competition.StartDate <= DateTime.Now)
+                    {
+                        return new Response { Code = 1, Message = "Start date must be after today", Data = null };
+                    }
+                    if (competition.Amount <= 0 || competition.Amount % 2 != 0)
+                    {
+                        return new Response { Code = 1, Message = "Amount of User must be more than 0 and should be even", Data = null };
+                    }
+                    competition.CreatedAt = DateTime.Now;
+                    competition.Status = StatusShowEnum.InProgess.ToString();
+                    await _competitionRepository.CreateCompetition(competition);
+                    return new Response { Code = 0, Message = "Create Competition Successfully", Data = competition };
                 }
-                if(competition.StartDate <= DateTime.Now)
-                {
-                    return new Response { Code = 1, Message =  "Start date must be after today",Data = null };
-                }
-                if(competition.Amount <= 0)
-                {
-                    return new Response { Code = 1, Message = "Amount of User must be more than 0", Data = null };
-                }
-                competition.CreatedAt = DateTime.Now;
-                competition.Status = StatusShowEnum.InProgess.ToString();
-                await _competitionRepository.CreateCompetition(competition);
-                return new Response { Code = 0, Message = "Create Competition Successfully", Data = competition };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
             }
         }
 
@@ -92,8 +99,15 @@ namespace Service.Service
 
         public async Task<Response> DeleteCompetition(Competition competition)
         {
-            await _competitionRepository.DeleteCompetition(competition);
-            return new Response() { Code = 0, Message = "Delete Competition Successfully", Data = null };
+            try
+            {
+                await _competitionRepository.DeleteCompetition(competition);
+                return new Response() { Code = 0, Message = "Delete Competition Successfully", Data = null };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task<Response> StartCompetition(int id)
