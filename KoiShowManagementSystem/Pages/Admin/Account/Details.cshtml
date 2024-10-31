@@ -1,0 +1,51 @@
+﻿@page
+@model KoiShowManagementSystem.Pages.Admin.Account.DetailsModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="text-center mb-4">User Details</h1>
+
+<div class="container">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-3">User Information</h4>
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold">Full Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.FullName)</dd>
+
+                <dt class="col-sm-3 fw-bold">Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Email)</dd>
+
+                <dt class="col-sm-3 fw-bold">Phone Number</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.PhoneNumber)</dd>
+
+                <dt class="col-sm-3 fw-bold">Address</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Address)</dd>
+
+                <dt class="col-sm-3 fw-bold">Role</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Role)</dd>
+
+                <dt class="col-sm-3 fw-bold">Status</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Status)</dd>
+
+                <dt class="col-sm-3 fw-bold">Updated At</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.UpdatedAt)</dd>
+
+                <dt class="col-sm-3 fw-bold">Created At</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.CreatedAt)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-2">
+        <a asp-page="./Edit" asp-route-id="@Model.User.Id" class="btn btn-primary">Edit</a>
+        <a asp-page="./Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}

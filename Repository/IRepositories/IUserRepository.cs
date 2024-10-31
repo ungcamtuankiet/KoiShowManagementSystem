@@ -9,6 +9,9 @@ namespace Repository.IRepositories
         Task<bool> CheckEmailAndPhoneNo(string email, string phone);
         Task<User?> GetUserById(int? id);
         Task RegisterUser(User user);
+        Task AddUser(User user);   
+        Task UpdateUser(User user);
+        Task DeleteUser(User user);
     }
 }
 

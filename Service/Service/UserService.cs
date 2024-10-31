@@ -136,6 +136,24 @@ namespace Service.Service
                 };
             }
         }
+        public async Task<Response> AddNewUser(User user)
+        {
+            await _userRepository.AddUser(user);
+            return new Response() { Code = 0, Message = "Add New User Successfully", Data = user };
+
+        }
+
+        public async Task<Response> UpdateUser(User user)
+        {
+            await _userRepository.UpdateUser(user);
+            return new Response() { Code = 0, Message = "Update User Successfully", Data = user };
+        }
+
+        public async Task<Response> DeleteUser(User user)
+        {
+            await _userRepository.UpdateUser(user);
+            return new Response() { Code = 0, Message = "Delete User Successfully", Data = user };
+        }
 
         private bool IsValidEmail(string email)
         {

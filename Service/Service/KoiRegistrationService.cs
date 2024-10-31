@@ -37,7 +37,7 @@ namespace Service.Service
             var getKoiRegistration = await _repository.GetKoiRegistrationById(id);
             var getCompetition = await _competitionService.GetCompetitionById(competitionId);
             var getUser = await _userService.GetUserById(getKoiRegistration.UserId);
-            if (getCompetition.Amount > 0)
+            if (getCompetition.Amount >= 0)
             {
                 if (getKoiRegistration.Status == KoiRegistrationCompetitionEnum.Rejected.ToString())
                 {

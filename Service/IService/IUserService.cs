@@ -11,5 +11,8 @@ namespace Service.IService
         Task<IList<User>> GetAll();
         Task<User> GetUserByEmail(string email);
         Task<User> GetUserById(int? userId);
+        Task<Response> AddNewUser(User user);  
+        Task<Response> UpdateUser(User user);
+        Task<Response> DeleteUser(User user);
     }
 }

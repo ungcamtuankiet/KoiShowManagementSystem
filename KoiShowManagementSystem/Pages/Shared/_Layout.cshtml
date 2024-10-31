@@ -27,6 +27,7 @@
                         @{
                             var userRole = Context.Session.GetString("UserRole");
                             var userName = Context.Session.GetString("UserName");
+                            var userId = Context.Session.GetInt32("UserId");
                         }
                         @if (!string.IsNullOrEmpty(userRole))
                         {
@@ -38,7 +39,7 @@
                                     @if (userRole == "Member")
                                     {
                                         <li><a class="dropdown-item" asp-area="" asp-page="/Koi/MyKoiList">View My Koi</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-page="/Index">Edit Profile</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/User/UpdateInformation" asp-route-id="@userId">Edit Profile</a></li>
                                         <li>
                                             <form method="post" asp-page-handler="Logout">
                                                 <button type="submit" class="dropdown-item">Logout</button>
@@ -47,7 +48,7 @@
                                     }
                                     else if (userRole == "Admin")
                                     {
-                                        <li><a class="dropdown-item" asp-area="" asp-page="/Admin/ManageAccount">Manage Account</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-page="/Admin/Account/Index">Manage Account</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-page="/Admin/Category/Index">Manage Category</a></li>
                                         <li>
                                             <form method="post" asp-page-handler="Logout">

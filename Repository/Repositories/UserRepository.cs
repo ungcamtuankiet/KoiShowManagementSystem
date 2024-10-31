@@ -34,7 +34,6 @@ namespace Repository.Repositories
             }
             return false;
         }
-
         public async Task<User?> GetUserByEmailAndPassword(string email, string password)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
@@ -48,6 +47,24 @@ namespace Repository.Repositories
         public async Task RegisterUser(User user)
         {
             _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddUser(User user)
+        {
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUser(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUser(User user)
+        {
+            _context.Users.Remove(user);   
             await _context.SaveChangesAsync();
         }
     }
