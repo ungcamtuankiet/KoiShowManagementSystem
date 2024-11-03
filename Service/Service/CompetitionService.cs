@@ -114,13 +114,34 @@ namespace Service.Service
         {
             var getCompetiton = await _competitionRepository.GetCompetitionById(id);
             var getKoiRegistation = await _koiRegistationRepository.GetKoiRegistationByCompetitionId(id);
-            int countRegistation = getKoiRegistation.Count();
-            if(getCompetiton.Amount > countRegistation)
+            if(getCompetiton.Amount > 0)
             {
-                return new Response() { Code = 1, Message = "The number of contest registrations is not enough so the contest cannot start yet.", Data = null };
+                return new Response() { Code = 1, Message = $"Còn thiếu {getCompetiton.Amount} để bắt đầu cuộc thi", Data = null };
             }
+            // Phân bố cá Koi theo từng cặp đấu
+            var koiRegistrations = getKoiRegistation.ToList();
+            var random = new Random();
+            koiRegistrations = koiRegistrations.OrderBy(x => random.Next()).ToList();
+
+            // Tạo các cặp đấu
+            List<Tuple<KoiRegistration, KoiRegistration>> matchups = new List<Tuple<KoiRegistration, KoiRegistration>>();
+            for (int i = 0; i < koiRegistrations.Count; i += 2)
+            {
+                if (i + 1 < koiRegistrations.Count)
+                {
+                    matchups.Add(new Tuple<KoiRegistration, KoiRegistration>(koiRegistrations[i], koiRegistrations[i + 1]));
+                }
+            }
+
+            // Cập nhật trạng thái của cuộc thi
             getCompetiton.Status = StatusShowEnum.Starting.ToString();
-            return new Response() { Code = 1, Message = "The number of contest registrations is not enough so the contest cannot start yet.", Data = null };
+
+            // Lưu các thay đổi vào database
+            await _competitionRepository.UpdateCompetition(getCompetiton);
+
+            // Logic xử lý vòng đấu: Tứ Kết, Bán Kết, Chung Kết sẽ được thêm sau
+            // Ví dụ: Tạo các vòng đấu, lưu kết quả và tiến hành theo quy tắc loại trực tiếp
+            return new Response() { Code = 0, Message = "Start Competition Successfully", Data = matchups };
         }
     }
 }
