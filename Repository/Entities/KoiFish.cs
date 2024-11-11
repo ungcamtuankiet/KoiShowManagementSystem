@@ -31,6 +31,12 @@ public partial class KoiFish
 
     public virtual ICollection<KoiRegistration> KoiRegistrations { get; set; } = new List<KoiRegistration>();
 
+    public virtual ICollection<Matchup> MatchupKoiId1Navigations { get; set; } = new List<Matchup>();
+
+    public virtual ICollection<Matchup> MatchupKoiId2Navigations { get; set; } = new List<Matchup>();
+
+    public virtual ICollection<ResultDetail> ResultDetails { get; set; } = new List<ResultDetail>();
+
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
 
     public virtual User? User { get; set; }

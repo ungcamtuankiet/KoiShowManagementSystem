@@ -33,5 +33,7 @@ public partial class Competition
 
     public virtual ICollection<KoiRegistration> KoiRegistrations { get; set; } = new List<KoiRegistration>();
 
+    public virtual ICollection<Matchup> Matchups { get; set; } = new List<Matchup>();
+
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
 }

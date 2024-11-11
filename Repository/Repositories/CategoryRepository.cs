@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repository.Data;
 using Repository.Entities;
 using Repository.IRepositories;
 

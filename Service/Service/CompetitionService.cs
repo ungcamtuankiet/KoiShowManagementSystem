@@ -15,11 +15,13 @@ namespace Service.Service
     {
         private readonly ICompetitionRepository _competitionRepository;
         private readonly IKoiRegistationRepository _koiRegistationRepository;
+        private readonly IMatchupRepository _matchupRepository;
 
-        public CompetitionService(ICompetitionRepository competitionRepository, IKoiRegistationRepository koiRegistationRepository)
+        public CompetitionService(ICompetitionRepository competitionRepository, IKoiRegistationRepository koiRegistationRepository, IMatchupRepository matchupRepository)
         {
             _competitionRepository = competitionRepository;
             _koiRegistationRepository = koiRegistationRepository;
+            _matchupRepository = matchupRepository;
         }
         public async Task<IList<Competition>> GetCompetitionList()
         {
@@ -114,25 +116,37 @@ namespace Service.Service
         {
             var getCompetiton = await _competitionRepository.GetCompetitionById(id);
             var getKoiRegistation = await _koiRegistationRepository.GetKoiRegistationByCompetitionId(id);
+            if(getCompetiton.Status != StatusShowEnum.InProgess.ToString())
+            {
+                return new Response() { Code = 1, Message = $"Cuộc thi đã được bắt đầu hoặc kết thúc !!!!", Data = null };
+            }
             if(getCompetiton.Amount > 0)
             {
-                return new Response() { Code = 1, Message = $"Còn thiếu {getCompetiton.Amount} để bắt đầu cuộc thi", Data = null };
+                return new Response() { Code = 1, Message = $"Còn thiếu {getCompetiton.Amount} cá koi đăng kí để bắt đầu cuộc thi", Data = null };
             }
+            // Phân bố cá Koi theo từng cặp đấu
             // Phân bố cá Koi theo từng cặp đấu
             var koiRegistrations = getKoiRegistation.ToList();
             var random = new Random();
             koiRegistrations = koiRegistrations.OrderBy(x => random.Next()).ToList();
 
             // Tạo các cặp đấu
-            List<Tuple<KoiRegistration, KoiRegistration>> matchups = new List<Tuple<KoiRegistration, KoiRegistration>>();
+            List<Matchup> matchups = new List<Matchup>();
             for (int i = 0; i < koiRegistrations.Count; i += 2)
             {
                 if (i + 1 < koiRegistrations.Count)
                 {
-                    matchups.Add(new Tuple<KoiRegistration, KoiRegistration>(koiRegistrations[i], koiRegistrations[i + 1]));
+                    var matchup = new Matchup
+                    {
+                        CompetitionId = getCompetiton.Id,
+                        KoiId1 = koiRegistrations[i].KoiId.Value,
+                        KoiId2 = koiRegistrations[i + 1].KoiId.Value,
+                        Status = "Chưa đấu"
+                    };
+                    matchups.Add(matchup);
                 }
             }
-
+            await _matchupRepository.AddMatChup(matchups);
             // Cập nhật trạng thái của cuộc thi
             getCompetiton.Status = StatusShowEnum.Starting.ToString();
 

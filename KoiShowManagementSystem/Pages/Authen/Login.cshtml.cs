@@ -32,6 +32,11 @@ namespace KoiShowManagementSystem.Pages.Authen
             HttpContext.Session.SetString("UserRole", getUser.Role.ToString());
             HttpContext.Session.SetString("UserName" , getUser.FullName);
             TempData["SuccessMessage"] = user.Message;
+            var getUserRole = HttpContext.Session.GetString("UserRole");
+            if (getUserRole == "Staff")
+                return RedirectToPage("/Staff/Competition/Index");
+            if (getUserRole == "Admin")
+                return RedirectToPage("/Admin/Account/Index");
             return RedirectToPage("/Index");
         }
     }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Repository.Entities;
 
-namespace Repository;
+namespace Repository.Data;
 
 public partial class KoiShowManagementSystemContext : DbContext
 {
@@ -26,13 +27,22 @@ public partial class KoiShowManagementSystemContext : DbContext
 
     public virtual DbSet<KoiRegistration> KoiRegistrations { get; set; }
 
+    public virtual DbSet<Matchup> Matchups { get; set; }
+
     public virtual DbSet<Result> Results { get; set; }
+
+    public virtual DbSet<ResultDetail> ResultDetails { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;uid=sa;pwd=12345;database=KoiShowManagementSystem;TrustServerCertificate=True");
+    {
+        var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+        IConfigurationRoot configuration = builder.Build();
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -145,6 +155,31 @@ public partial class KoiShowManagementSystemContext : DbContext
                 .HasConstraintName("FK__KoiRegist__User___5535A963");
         });
 
+        modelBuilder.Entity<Matchup>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Matchup__3214EC07ABA8FC8F");
+
+            entity.ToTable("Matchup");
+
+            entity.Property(e => e.CompetitionId).HasColumnName("Competition_Id");
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.KoiId1).HasColumnName("Koi_Id1");
+            entity.Property(e => e.KoiId2).HasColumnName("Koi_Id2");
+            entity.Property(e => e.Status).HasMaxLength(50);
+
+            entity.HasOne(d => d.Competition).WithMany(p => p.Matchups)
+                .HasForeignKey(d => d.CompetitionId)
+                .HasConstraintName("FK__Matchup__Competi__60A75C0F");
+
+            entity.HasOne(d => d.KoiId1Navigation).WithMany(p => p.MatchupKoiId1Navigations)
+                .HasForeignKey(d => d.KoiId1)
+                .HasConstraintName("FK__Matchup__Koi_Id1__619B8048");
+
+            entity.HasOne(d => d.KoiId2Navigation).WithMany(p => p.MatchupKoiId2Navigations)
+                .HasForeignKey(d => d.KoiId2)
+                .HasConstraintName("FK__Matchup__Koi_Id2__628FA481");
+        });
+
         modelBuilder.Entity<Result>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Result__3214EC0742EB1A33");
@@ -167,6 +202,24 @@ public partial class KoiShowManagementSystemContext : DbContext
             entity.HasOne(d => d.Koi).WithMany(p => p.Results)
                 .HasForeignKey(d => d.KoiId)
                 .HasConstraintName("FK__Result__Koi_Id__5812160E");
+        });
+
+        modelBuilder.Entity<ResultDetail>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__ResultDe__3214EC070E3051B5");
+
+            entity.ToTable("ResultDetail");
+
+            entity.Property(e => e.ResultId).HasColumnName("Result_Id");
+            entity.Property(e => e.Status).HasMaxLength(50);
+
+            entity.HasOne(d => d.KoiWinNavigation).WithMany(p => p.ResultDetails)
+                .HasForeignKey(d => d.KoiWin)
+                .HasConstraintName("FK__ResultDet__KoiWi__5DCAEF64");
+
+            entity.HasOne(d => d.Result).WithMany(p => p.ResultDetails)
+                .HasForeignKey(d => d.ResultId)
+                .HasConstraintName("FK__ResultDet__Resul__5CD6CB2B");
         });
 
         modelBuilder.Entity<User>(entity =>

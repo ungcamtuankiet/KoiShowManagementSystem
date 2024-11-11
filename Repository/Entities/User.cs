@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 namespace Repository.Entities;
-
 public partial class User
 {
     public int Id { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repository.Data;
 using Repository.Entities;
 using Repository.IRepositories;
 using System;
@@ -19,7 +20,12 @@ namespace Repository.Repositories
         }
         public async Task<IList<KoiFish>> GetAllKoiFish()
         {
-            return await _context.KoiFishes.Where(k => k.Status == "Active").Include(k => k.User).ToListAsync();
+            return await _context.KoiFishes.Where(k => k.Status == "Approve").Include(k => k.User).ToListAsync();
+        }
+
+        public async Task<List<KoiFish>> GetAllKoiFishForStaff()
+        {
+            return await _context.KoiFishes.Include(k => k.User).OrderBy(kf => kf.Status == "Pending").ToListAsync();
         }
         public async Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId)
         {

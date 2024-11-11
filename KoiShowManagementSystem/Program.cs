@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Repository;
+using Repository.Data;
 using Repository.IRepositories;
 using Repository.Repositories;
 using Service.IService;
@@ -36,6 +36,7 @@ builder.Services.AddScoped<IKoiRepository, KoiRepository>();
 builder.Services.AddScoped<ICompetitionRepository, CompetitionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IKoiRegistationRepository, KoiRegistationRepository>();
+builder.Services.AddScoped<IMatchupRepository, MatchupRepository>();    
 
 // DI Service
 builder.Services.AddScoped<IUserService, UserService>();

@@ -208,5 +208,50 @@ namespace Service.Service
 
             await SendEmailAsync(emailDto);
         }
+
+        public async Task SendApproveKoi(string email)
+        {
+            var emailDto = new EmailDTO
+            {
+                To = email,
+                Subject = "Koi was approved",
+                Body = $@"
+                    <html>
+                    <body style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                        <div style='max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
+                            <h2 style='color: #333;'>Koi  was approved</h2>
+                            <p style='color: #555;'>Your koi has been approved into the website.</p>
+                            <p style='color: #555;'>Congratulation.</p>
+                            <p style='color: #555;'>Best regards,<br />Koi Show System Management</p>
+                        </div>
+                    </body>
+                    </html>"
+            };
+
+            await SendEmailAsync(emailDto);
+        }
+
+        public async Task SendRejectKoi(string email, string reason)
+        {
+            var emailDto = new EmailDTO
+            {
+                To = email,
+                Subject = "Koi was rejected",
+                Body = $@"
+                    <html>
+                    <body style='font-family: Arial, sans-serif; line-height: 1.6;'>
+                        <div style='max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
+                            <h2 style='color: #333;'>Koi was rejected</h2>
+                            <p style='color: #555;'>Your koi add to website was reject</p>
+                            <p style='color: #555;'>Reason: {reason}</p>
+                            <p style='color: #555;'>If you have any questions or need further assistance, please contact our support team.</p>
+                            <p style='color: #555;'>Best regards,<br />Koi Show System Management</p>
+                        </div>
+                    </body>
+                    </html>"
+            };
+
+            await SendEmailAsync(emailDto);
+        }
     }
 }

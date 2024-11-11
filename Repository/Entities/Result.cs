@@ -26,4 +26,6 @@ public partial class Result
     public virtual Competition? Competition { get; set; }
 
     public virtual KoiFish? Koi { get; set; }
+
+    public virtual ICollection<ResultDetail> ResultDetails { get; set; } = new List<ResultDetail>();
 }

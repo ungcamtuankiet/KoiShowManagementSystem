@@ -49,7 +49,7 @@ namespace KoiShowManagementSystem.Pages.Staff.Competition
                 return Page();
             }
 
-            TempData["SuccessMessage"] = "Cu?c thi ?ã ???c b?t ??u thành công!";
+            TempData["SuccessMessage"] = "B?t ??u cu?c thi thành công";
             return RedirectToPage("/Staff/Competition/Details", new { id = CompetitionId });
         }
         public async Task<IActionResult> OnPostLogout()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repository.Data;
 using Repository.Entities;
 using Repository.Enum;
 using Repository.IRepositories;
@@ -20,7 +21,7 @@ namespace Repository.Repositories
         }
         public async Task<IList<KoiRegistration>> GetKoiRegistationByCompetitionId(int competitionId)
         {
-            return await _context.KoiRegistrations.Where(kr => kr.CompetitionId == competitionId && kr.Status == KoiRegistationEnum.Approval.ToString()).ToListAsync();
+            return await _context.KoiRegistrations.Where(kr => kr.CompetitionId == competitionId && kr.Status == KoiRegistrationCompetitionEnum.Accepted.ToString()).ToListAsync();
         }
         public async Task<IList<KoiRegistration>> GetListKoiPending(int competitionId)
         {

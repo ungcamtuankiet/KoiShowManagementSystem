@@ -40,6 +40,10 @@ namespace Service.Service
         {
             return await _koiRepository.GetAllKoiFish();
         }
+        public async Task<List<KoiFish>> GetAllKoiFishForStaff()
+        {
+            return await _koiRepository.GetAllKoiFishForStaff();
+        }
         public async Task<List<KoiFish>> GetKoiFishByUserIdAsync(int userId)
         {
             return await _koiRepository.GetKoiFishByUserIdAsync(userId);
@@ -174,6 +178,54 @@ namespace Service.Service
                 Message = "Koi is not exist",
                 Data = null
             };
+        }
+
+        public async Task<Response> ApprovalKoi(int koiId)
+        {
+            var getKoi = await _koiRepository.GetKoiById(koiId);
+            var getUserId = getKoi.UserId;
+            var getUser = await _userService.GetUserById(getUserId);
+            if (getKoi == null)
+                return new Response() { Code = 1, Message = "Koi not found", Data = null };
+            if (getKoi.Status == KoiStatus.Pending.ToString())
+            {
+                getKoi.Status = KoiStatus.Approve.ToString();
+                await _koiRepository.UpdateKoi(getKoi);
+                await _emailService.SendApproveKoi(getUser.Email);
+                return new Response() { Code = 0, Message = "Approve Koi Successfully", Data = getKoi };
+            }
+            if(getKoi.Status == KoiStatus.Reject.ToString())
+            {
+                return new Response() { Code = 1, Message = "Koi was reject", Data = null };
+            }
+            else
+            {
+                return new Response() { Code = 1, Message = "Koi was approve", Data = null };
+            }
+        }
+
+        public async Task<Response> Reject(int koiId, string reason)
+        {
+            var getKoi = await _koiRepository.GetKoiById(koiId);
+            var getUserId = getKoi.UserId;
+            var getUser = await _userService.GetUserById(getUserId);
+            if (getKoi == null)
+                return new Response() { Code = 1, Message = "Koi not found", Data = null };
+            if (getKoi.Status == KoiStatus.Pending.ToString())
+            {
+                getKoi.Status = KoiStatus.Reject.ToString();
+                await _koiRepository.UpdateKoi(getKoi);
+                await _emailService.SendRejectKoi(getUser.Email, reason);
+                return new Response() { Code = 0, Message = "Reject Koi Successfully", Data = getKoi };
+            }
+            if (getKoi.Status == KoiStatus.Approve.ToString())
+            {
+                return new Response() { Code = 1, Message = "Koi was approval", Data = null };
+            }
+            else
+            {
+                return new Response() { Code = 1, Message = "Koi was approve", Data = null };
+            }
         }
     }
 }

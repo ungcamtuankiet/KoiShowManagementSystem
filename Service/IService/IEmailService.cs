@@ -17,5 +17,7 @@ namespace Service.IService
         Task SendAcceptKoiRegistration(string email);
         Task SendRejectKoiRegistrationAuto(string email);
         Task SendRejectKoiRegistration(string email, string reason);
+        Task SendApproveKoi(string email);
+        Task SendRejectKoi(string email, string reason);
     }
 }
